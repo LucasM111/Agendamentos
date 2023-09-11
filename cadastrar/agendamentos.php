@@ -29,9 +29,6 @@ $produto = $dados->produto ?? NULL;
 
 ?>
 
-
-
-
 <div class="card">
 <div class="card-header">
         <strong>Cadastro de Agendamentos</strong>

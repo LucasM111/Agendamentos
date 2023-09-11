@@ -41,7 +41,7 @@
         if (!isset($_SESSION["usuarioAdm"]["id"])) {
             require "pages/login.php";
         } else {
-            //definir uma variavel $pageina
+            //definir uma variavel $pagina
             $pagina = "home";
             //incluir o header
             require "header.php";

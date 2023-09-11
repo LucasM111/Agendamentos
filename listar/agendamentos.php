@@ -37,7 +37,7 @@
             <tbody>
             <!-- date_format(v.data,'%d/%m/%Y') data -->
                 <?php
-                $sqlAgendamentos = "select id, date_format(data,'%d/%m/%Y') data, Nome, veiculo, motorista, hora, motivo, n_visitantes, produto from agendamentos  order by id desc";
+                $sqlAgendamentos = "select id, date_format(data,'%d/%m/%Y') data, Nome, veiculo, motorista, hora, motivo, n_visitantes, produto from agendamentos  order by data desc";
                 $consultaAgendamento = $pdo->prepare($sqlAgendamentos);
                 $consultaAgendamento->execute();
 

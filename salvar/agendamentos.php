@@ -9,7 +9,7 @@ if (!$_POST)
     mensagem("Erro", "Requisição inválida");
 
 //recuperar os dados digitados no formulário
-// print_r($_POST);
+print_r($_POST);
 $id = trim($_POST["id"] ?? NULL);
 $nome = trim($_POST["nome"] ?? NULL);
 $veiculo = trim($_POST["veiculo"] ?? NULL);
@@ -38,6 +38,7 @@ if (empty($n_visitantes))
 if (empty($produto))
     mensagem("Erro", "Preencha o produto");
 
+formatarData($data);
 
 //verificar se vamos dar um insert ou um update
 if (empty($id)) {
