@@ -42,3 +42,16 @@ function calcularTotal(quantidade) {
         document.querySelector("#total").value = total;
     }
 }
+
+function numeroInteiro(numero){
+    let valor = document.querySelector('#n_visitantes').value;
+
+    if (numero <=0){
+        Swal.fire({
+            title: 'Erro',
+            text: 'Digite um valor válido'
+        })
+        $('#n_visitantes').val("")
+    }
+
+}
