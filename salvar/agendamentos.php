@@ -48,13 +48,10 @@ if (empty($n_visitantes))
 if (empty($produto))
     mensagem("Erro", "Preencha o produto");
 
+
 $data = formatarData($data);
 
-$dataatual = date('m/d/Y');
 
-if($data < $dataatual){
-    mensagem("Erro","Data Invalida");
-}
 
 //verificar se vamos dar um insert ou um update
 if (empty($id)) {
