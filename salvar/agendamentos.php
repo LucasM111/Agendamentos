@@ -9,7 +9,7 @@ if (!$_POST)
     mensagem("Erro", "Requisição inválida");
 
 //recuperar os dados digitados no formulário
-print_r($_POST);
+// print_r($_POST);
 $id = trim($_POST["id"] ?? NULL);
 $nome = trim($_POST["nome"] ?? NULL);
 $veiculo = trim($_POST["veiculo"] ?? NULL);
@@ -23,22 +23,38 @@ $produto = trim($_POST["produto"] ?? NULL);
 //verificar se esses campos estão em branco
 if (empty($nome))
     mensagem("Erro", "Preencha o nome");
+
 if (empty($veiculo))
     mensagem("Erro", "Preencha o veiculo");
+
 if (empty($motorista))
     mensagem("Erro", "Preencha o motorista");
+
 if (empty($data))
     mensagem("Erro", "Preencha a data");
+
 if (empty($hora))
     mensagem("Erro", "Preencha a hora");
+
 if (empty($motivo))
     mensagem("Erro", "Preencha o motivo");
+
 if (empty($n_visitantes))
     mensagem("Erro", "Preencha o numero de visitantes");
+    else if($n_visitantes <= 0 || $n_visitantes > 9){
+        mensagem("Erro","O numero permitido de pessoas é apenas de 9");
+    }
+
 if (empty($produto))
     mensagem("Erro", "Preencha o produto");
 
-formatarData($data);
+$data = formatarData($data);
+
+$dataatual = date('m/d/Y');
+
+if($data < $dataatual){
+    mensagem("Erro","Data Invalida");
+}
 
 //verificar se vamos dar um insert ou um update
 if (empty($id)) {
@@ -66,6 +82,8 @@ if (empty($id)) {
     $consulta->bindParam(":n_visitantes", $n_visitantes);
     $consulta->bindParam(":produto", $produto);
 }
+
+
 
 if ($consulta->execute()) {
     mensagem("Sucesso", "Registro salvo/alterado com sucesso");

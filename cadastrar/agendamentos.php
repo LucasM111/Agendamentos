@@ -115,7 +115,7 @@ $produto = $dados->produto ?? NULL;
 
             <!-- Quantidade de pessoas que vão comparecer ao estabelecimento -->
             <label for="n_visitantes">Digite a quantidade de visitantes:</label>
-            <input type="number" name="n_visitantes" id="n_visitantes" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $n_visitantes ?>">
+            <input type="number" min="0" max="9" oninput="validity.valid||(value='')" name="n_visitantes" id="n_visitantes" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $n_visitantes ?>">
             <br>
 
             <!-- Produto a ser transportado, seja ele coleta, ou entrega -->
@@ -130,6 +130,7 @@ $produto = $dados->produto ?? NULL;
         </form>
     </div>
 </div>
+
 
 <script>
     VMasker(document.querySelector("#data")).maskPattern("99/99/9999")
