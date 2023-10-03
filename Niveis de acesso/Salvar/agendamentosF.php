@@ -41,7 +41,7 @@ if (empty($motivo))
 
 if (empty($n_visitantes))
     mensagem("Erro", "Preencha o numero de visitantes");
-    else if($n_visitantes <= 1 || $n_visitantes > 9){
+    else if($n_visitantes <= 0 || $n_visitantes > 9){
         mensagem("Erro","O numero permitido de pessoas é apenas de 9");
     }
 

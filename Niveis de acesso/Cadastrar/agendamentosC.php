@@ -96,7 +96,7 @@ $produto = $dados->produto ?? NULL;
                 ?>
             </select>
             <br>
- 
+
             <!-- Data do Agendamento -->
             <label for="data">Data de agendamento</label>
             <input type="text" name="data" id="data" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $data ?>">
@@ -109,21 +109,13 @@ $produto = $dados->produto ?? NULL;
             <br>
 
             <!-- Motivo do Agendamento -->
-            <label for="motivo">Motivo do Agendamento</label>
-            <select name="motivo" id="motivo"
-            class="form-control" required 
-            data-parsley-required-message="Selecione o motivo da visita">
-                <option value=""></option>
-                <option value="Entrega de Produtos">Entrega de Produtos</option>
-                <option value="Coleta de Produtos">Coleta de Produtos</option>
-            </select>
-            <script>$("#motivo").val("<?=$motivo?>");</script>
-
+            <label for="motivo">Motivo agendamento</label>
+            <input type="text" name="motivo" id="motivo" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $hora ?>">
             <br>
 
             <!-- Quantidade de pessoas que vão comparecer ao estabelecimento -->
             <label for="n_visitantes">Digite a quantidade de visitantes:</label>
-            <input type="number" min="1" max="9" oninput="validity.valid||(value='')" name="n_visitantes" id="n_visitantes" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $n_visitantes ?>">
+            <input type="number" min="0" max="9" oninput="validity.valid||(value='')" name="n_visitantes" id="n_visitantes" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $n_visitantes ?>">
             <br>
 
             <!-- Produto a ser transportado, seja ele coleta, ou entrega -->
