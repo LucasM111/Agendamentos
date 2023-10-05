@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/summernote-lite.min.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!----- arquivos javascript ---->
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

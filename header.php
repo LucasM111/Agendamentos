@@ -3,6 +3,7 @@ if (!isset($pagina)) {
     header("Location: index.php");
 }
 ?>
+
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- <p class = "text-white">Controle de Fluxo Veicular: Agendamento de Visitas</p> -->
 
