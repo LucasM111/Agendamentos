@@ -11774,7 +11774,7 @@ thead {
 .wrapper .btnlog-in{
   width: 100%;
   height: 45%;
-  background-color: #0c4128;
+  background-color: #2a2185;
   border: none;
   outline: none;
   border-radius: 40px;
@@ -11783,7 +11783,7 @@ thead {
 }
 
 .wrapper .btnlog-in:hover{
-  background-color: #198754;
+  background-color: #493eb3;
 }
 
 
