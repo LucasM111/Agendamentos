@@ -32,32 +32,17 @@ $ativo = $dados->ativo ?? NULL;
         </div>
     </div>
     <div class="card-body">
-        <form name="formCadastro" method="post" enctype="multipart/form-data" action="salvar/usuarios"
-            data-parsley-validate="">
+        <form name="formCadastro" method="post" enctype="multipart/form-data" action="salvar/usuarios" data-parsley-validate="">
             <label for="id">ID:</label>
-<<<<<<< Updated upstream
-            <input type="text" name="id" id="id" class="form-control" readonly value="<?=$id?>">
-            <br>
-
-            <label for="nome">Nome de Usuário:</label>
-            <input type="text" name="nome" id="nome" class="form-control" required value="<?=$nome?>"
-=======
             <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>">
             <br>
 
             <label for="nome">Nome de Usuário:</label>
-            <input type="text" name="nome" id="nome" class="form-control" required value=""
->>>>>>> Stashed changes
-                data-parsley-required-message="Preencha o nome">
+            <input type="text" name="nome" id="nome" class="form-control" required value="" data-parsley-required-message="Preencha o nome">
             <br>
 
             <label for="login">Login de Usuário:</label>
-<<<<<<< Updated upstream
-            <input type="text" name="login" id="login" class="form-control" required value="<?=$login?>"
-=======
-            <input type="text" name="login" id="login" class="form-control" required value=""
->>>>>>> Stashed changes
-                data-parsley-required-message="Preencha o login">
+            <input type="text" name="login" id="login" class="form-control" required value="" data-parsley-required-message="Preencha o login">
             <br>
 
             <label for="senha">Senha de Usuário:</label>
@@ -69,39 +54,25 @@ $ativo = $dados->ativo ?? NULL;
             <br>
 
             <label for="ativo">Ativo?</label>
-            <select name="ativo" id="ativo" class="form-control" required
-                data-parsley-required-message="Selecione se está ativo">
+            <select name="ativo" id="ativo" class="form-control" required data-parsley-required-message="Selecione se está ativo">
                 <option value=""></option>
                 <option value="S">Sim</option>
                 <option value="N">Não</option>
             </select>
             <script>
-<<<<<<< Updated upstream
-            $("#ativo").val("<?=$ativo?>");
-=======
-            $("#ativo").val("<?= $ativo ?>");
->>>>>>> Stashed changes
+                $("#ativo").val("<?= $ativo ?>");
             </script>
 
             <br>
 
             <label for="categoria">Categoria?</label>
-            <select name="categoria" id="categoria" class="form-control" required
-                data-parsley-required-message="Selecione se está categoria">
+            <select name="categoria" id="categoria" class="form-control" required data-parsley-required-message="Selecione se está categoria">
                 <option value=""></option>
-<<<<<<< Updated upstream
                 <option value="Administrador">Administrador</option>
                 <option value="Cliente">Cliente</option>
             </select>
             <script>
-            $("#categoria").val("<?=$categoria?>");
-=======
-                <option value='1'>Funcionario</option>
-                <option value='0'>Cliente</option>
-            </select>
-            <script>
-            $("#categoria").val("<?= $categoria ?>");
->>>>>>> Stashed changes
+                $("#categoria").val("<?= $categoria ?>");
             </script>
 
             <br>
