@@ -45,20 +45,25 @@ $sobrenome = $dados->sobrenome ?? NULL;
 
             <!-- Nome -->
             <label for="nome">Digite o Nome Motorista:</label>
-            <input type="text" name="nome" id="nome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+            <input type="text" name="nome" id="nome" class="form-control" required
+                data-parsley-required-message="Por favor, preencha este campo" value="">
             <br>
 
             <!-- Sobrenome -->
             <label for="sobrenome">Digite Sobrenome do Motorista:</label>
-            <input type="text" name="sobrenome" id="sobrenome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+            <input type="text" name="sobrenome" id="sobrenome" class="form-control" required
+                data-parsley-required-message="Por favor, preencha este campo" value="">
             <br>
 
 
             <button type="submit" class="btn btn-success">
                 <i class="fas fa-check"></i> Salvar Dados
             </button>
+        </form>
+        <br>
 
-
+        <form name="formvoltar" method="post" action="home">
+            <button type="submit" class="btn btn-secondary">Voltar</button>
         </form>
     </div>
 </div>

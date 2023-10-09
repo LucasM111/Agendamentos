@@ -78,5 +78,8 @@
         <p>Lembrando que o campo "Veículo" e o campo "Motorista" requerem a seleção de opções previamente cadastradas. O campo "Data" pode ser preenchido sem caracteres separadores (por exemplo, "03102023"), e o próprio sistema converterá para o formato correto (03/10/2023). O campo "Motivo de Agendamento" permite escolher entre as opções já cadastradas no sistema. Quanto ao campo "Quantidade de visitantes", informe o total de pessoas que irão até a empresa, contando com o motorista. Por exemplo, se o agendante estiver acompanhado de um motorista, a quantidade deve ser 2 pessoas; se apenas o motorista for até o estabelecimento, informe 1 pessoa. O campo "Produto" deve ser usado para especificar qual produto será coletado ou entregue na empresa.</p>
     </div>
     <br>
+    <form name="formvoltar" method="post" action="home">
+            <button type="submit" class="btn btn-secondary">Voltar</button>
+        </form>
 </body>
 </html>

@@ -11792,3 +11792,284 @@ thead {
   background-size: cover;
   background-position: center;
 }
+
+
+/* ========= Globals ========= */
+
+/* Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+.global{
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --blue: #2a2185;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+  --green: #018721;
+  --purple: #8000ff;
+  --red: #ff0000;
+  --light_purple: #935fed;
+}
+
+.bodyclasshome{
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.containerhome{
+  position: relative;
+  width: 100%;
+}
+
+.navigationhome{
+  position: fixed;
+  width: 310px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.navigationhome.active{
+  width: 110px;
+}
+
+.navigationhome ul{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigationhome ul li{
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigationhome ul li:hover,
+.navigationhome ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigationhome ul li:nth-child(1){
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigationhome ul li a{
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.navigationhome ul li:hover a,
+.navigationhome ul li.hovered a{
+  color: var(--blue);
+}
+
+.navigationhome ul li a .icon{
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+
+.navigationhome ul li a .icon ion-icon{
+  font-size: 1.75rem;
+}
+
+.navigationhome ul li a .title{
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* curva de fora */
+
+.navigationhome ul li:hover a::before,
+.navigationhome ul li.hovered a::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+.navigationhome ul li:hover a::after,
+.navigationhome ul li.hovered a::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* MAIN */
+
+.mainhome{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background-color: var(--white);
+  transition: 0.5s;
+}
+
+.mainhome.active{
+  width: calc(100% - 110px);
+  left: 110px;
+}
+
+.topbarhome{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.togglehome{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.userhome{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.userhome img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PAGINA DE ERRO  */
+.bodyerro{
+  background-color: var(--light_purple);
+  overflow: hidden;
+}
+.mainerro{
+  overflow: hidden;
+}
+
+.sectionerro{
+  height: 100vh;
+  padding: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.lefterro{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.lefterro p{
+  font-size: 5rem;
+  color: #c19ffc;
+  margin-bottom: 10px;
+}
+
+.lefterro h4{
+  font-size: 3.5rem;
+  color: var(--white);
+  margin-bottom: 3rem;
+}
+
+.lefterro .btn{
+  padding: 1.5rem 5rem;
+  background-color: var(--purple);
+  border-radius: 15px;
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.lefterro .btn:hover{
+  background-color: var(--blue);
+}
+
+.righterro img{
+  width: 500px;
+  margin-bottom: 1rem;
+  animation: float 0.8s infinite alternate;
+}
+
+.righterro .shadowerro{
+  width: 450px;
+  height: 45px;
+  background-color: hsla(38, 21%, 19%, .16);
+  border-radius: 50%;
+  margin: 0 auto;
+  filter: blur(5px);
+  animation: shadow 0.8s infinite alternate;
+}
+
+@keyframes float{
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(20px);
+  }
+}
+
+@keyframes shadow{
+  0%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(.85, .85);
+  }
+}
+
