@@ -1,22 +1,22 @@
 <?php
-    if (!isset($pagina))
-        exit;
-    
-    if (!empty($id)) {
-        $sqlProduto = "select * from usuarios
+if (!isset($pagina))
+    exit;
+
+if (!empty($id)) {
+    $sqlProduto = "select * from usuarios
         where id = :id LIMIT 1";
-        $consultaProduto = $pdo->prepare($sqlProduto);
-        $consultaProduto->bindParam(":id", $id);
-        $consultaProduto->execute();
+    $consultaProduto = $pdo->prepare($sqlProduto);
+    $consultaProduto->bindParam(":id", $id);
+    $consultaProduto->execute();
 
-        //recuperar os dados do sql
-        $dados = $consultaProduto->fetch(PDO::FETCH_OBJ);
-    }
+    //recuperar os dados do sql
+    $dados = $consultaProduto->fetch(PDO::FETCH_OBJ);
+}
 
-    $id = $dados->id ?? NULL;
-    $nome = $dados->nome ?? NULL;
-    $login = $dados->login ?? NULL;
-    $ativo = $dados->ativo ?? NULL;
+$id = $dados->id ?? NULL;
+$nome = $dados->nome ?? NULL;
+$login = $dados->login ?? NULL;
+$ativo = $dados->ativo ?? NULL;
 
 ?>
 <div class="card">
@@ -35,16 +35,28 @@
         <form name="formCadastro" method="post" enctype="multipart/form-data" action="salvar/usuarios"
             data-parsley-validate="">
             <label for="id">ID:</label>
+<<<<<<< Updated upstream
             <input type="text" name="id" id="id" class="form-control" readonly value="<?=$id?>">
             <br>
 
             <label for="nome">Nome de Usuário:</label>
             <input type="text" name="nome" id="nome" class="form-control" required value="<?=$nome?>"
+=======
+            <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>">
+            <br>
+
+            <label for="nome">Nome de Usuário:</label>
+            <input type="text" name="nome" id="nome" class="form-control" required value=""
+>>>>>>> Stashed changes
                 data-parsley-required-message="Preencha o nome">
             <br>
 
             <label for="login">Login de Usuário:</label>
+<<<<<<< Updated upstream
             <input type="text" name="login" id="login" class="form-control" required value="<?=$login?>"
+=======
+            <input type="text" name="login" id="login" class="form-control" required value=""
+>>>>>>> Stashed changes
                 data-parsley-required-message="Preencha o login">
             <br>
 
@@ -64,7 +76,11 @@
                 <option value="N">Não</option>
             </select>
             <script>
+<<<<<<< Updated upstream
             $("#ativo").val("<?=$ativo?>");
+=======
+            $("#ativo").val("<?= $ativo ?>");
+>>>>>>> Stashed changes
             </script>
 
             <br>
@@ -73,11 +89,19 @@
             <select name="categoria" id="categoria" class="form-control" required
                 data-parsley-required-message="Selecione se está categoria">
                 <option value=""></option>
+<<<<<<< Updated upstream
                 <option value="Administrador">Administrador</option>
                 <option value="Cliente">Cliente</option>
             </select>
             <script>
             $("#categoria").val("<?=$categoria?>");
+=======
+                <option value='1'>Funcionario</option>
+                <option value='0'>Cliente</option>
+            </select>
+            <script>
+            $("#categoria").val("<?= $categoria ?>");
+>>>>>>> Stashed changes
             </script>
 
             <br>

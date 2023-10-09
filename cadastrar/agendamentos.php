@@ -114,6 +114,7 @@ $produto = $dados->produto ?? NULL;
         <br>
 
         <!-- Motivo do Agendamento -->
+<<<<<<< Updated upstream
         <label for="motivo">Motivo do Agendamento</label>
         <select name="motivo" id="motivo" class="form-control" required
             data-parsley-required-message="Selecione o motivo da visita">
@@ -148,6 +149,30 @@ $produto = $dados->produto ?? NULL;
 
     <form name="formvoltar" method="post" action="home">
         <button type="submit" class="btn btn-secondary">Voltar</button>
+=======
+        <label for="motivo">Motivo agendamento</label>
+        <input type="text" name="motivo" id="motivo" class="form-control" required
+            data-parsley-required-message="Por favor, preencha este campo" value="<?= $hora ?>">
+        <br>
+
+        <!-- Quantidade de pessoas que vão comparecer ao estabelecimento -->
+        <label for="n_visitantes">Digite a quantidade de visitantes:</label>
+        <input type="number" min="1" max="9" oninput="validity.valid||(value='')" name="n_visitantes" id="n_visitantes"
+            class="form-control" required data-parsley-required-message="Por favor, preencha este campo"
+            value="<?= $n_visitantes ?>">
+        <br>
+
+        <!-- Produto a ser transportado, seja ele coleta, ou entrega -->
+        <label for="produto">Produto</label>
+        <input type="text" name="produto" id="produto" class="form-control" required
+            data-parsley-required-message="Por favor, preencha este campo" value="<?= $produto ?>">
+        <br>
+
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Salvar Dados
+        </button>
+
+>>>>>>> Stashed changes
     </form>
 
 </div>
