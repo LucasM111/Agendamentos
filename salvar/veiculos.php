@@ -12,6 +12,9 @@ if (!$_POST)
 $id = trim($_POST["id"] ?? NULL);
 $modelo = trim($_POST["modelo"] ?? NULL);
 $placa = trim($_POST["placa"] ?? NULL);
+if (!validarPlaca($placa)) {
+    mensagem("Erro", "Placa inválida");
+}
 
 
 //verificar se esses campos estão em branco

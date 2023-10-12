@@ -6,6 +6,7 @@ require "configs/conexao.php";
 
 date_default_timezone_set('America/Sao_Paulo');
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,7 +25,9 @@ date_default_timezone_set('America/Sao_Paulo');
     <link rel="stylesheet" href="css/summernote-lite.min.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!----- arquivos javascript ---->
     <script src="js/jquery-3.5.1.min.js"></script>
@@ -36,6 +39,9 @@ date_default_timezone_set('America/Sao_Paulo');
     <script src="js/sweetalert2.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/vanilla-masker.js"></script>
+
+
+
 </head>
 
 <body>
@@ -81,9 +87,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
     ?>
 
-    <script src='js/main.js'></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 
 </html>

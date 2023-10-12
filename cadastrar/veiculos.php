@@ -18,49 +18,41 @@ $placa = $dados->placa ?? NULL;
 ?>
 
 
+<div class="cadastramento">
+    <div class="card">
+        <div class="card-header">
+            <strong>Cadastro de Veiculos</strong>
 
-<div class="card">
-    <div class="card-header">
-        <strong>Cadastro de Veiculos</strong>
+            <div class="float-end">
+                <a href="cadastrar/veiculos" class="btn btn-success btn-sm">
+                    <i class="fas fa-file"></i> Novo Veiculo
+                </a>
+                <a href="listar/veiculos" class="btn btn-info btn-sm">
+                    <i class="fas fa-search"></i> Listar Veiculo
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <form name="formveiculos" method="post" action="salvar/veiculos" data-parsley-validate="">
+                <br>
 
-        <div class="float-end">
-            <a href="cadastrar/veiculos" class="btn btn-success btn-sm">
-                <i class="fas fa-file"></i> Novo Veiculo
-            </a>
-            <a href="listar/veiculos" class="btn btn-info btn-sm">
-                <i class="fas fa-search"></i> Listar Veiculo
-            </a>
+                <!-- Modelo -->
+                <label for="modelo">Digite o Modelo do Veiculo:</label>
+                <input type="text" name="modelo" id="modelo" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <br>
+
+                <!-- Placa -->
+                <label for="placa">Placa do Veiculo</label>
+                <input type="text" name="placa" id="placa" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <br>
+
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-check"></i> Salvar Dados
+                </button>
+            </form>
+            <br>
         </div>
     </div>
-    <div class="card-body">
-        <form name="formveiculos" method="post" action="salvar/veiculos" data-parsley-validate="">
-            <br>
-
-            <!-- ID -->
-            <label for="id">ID:</label>
-            <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>">
-            <br>
-
-            <!-- Modelo -->
-            <label for="modelo">Digite o Modelo do Veiculo:</label>
-            <input type="text" name="modelo" id="modelo" class="form-control" required
-                data-parsley-required-message="Por favor, preencha este campo" value="">
-            <br>
-
-            <!-- Placa -->
-            <label for="placa">Placa do Veiculo</label>
-            <input type="text" name="placa" id="placa" class="form-control" required
-                data-parsley-required-message="Por favor, preencha este campo" value="">
-            <br>
-
-            <button type="submit" class="btn btn-success">
-                <i class="fas fa-check"></i> Salvar Dados
-            </button>
-        </form>
-        <br>
-
-        <form name="formvoltar" method="post" action="home">
-            <button type="submit" class="btn btn-secondary">Voltar</button>
-        </form>
-    </div>
 </div>
+<br>
+<br>

@@ -41,15 +41,38 @@ if (empty($motivo))
 
 if (empty($n_visitantes))
     mensagem("Erro", "Preencha o numero de visitantes");
-    else if($n_visitantes <= 1 || $n_visitantes > 9){
-        mensagem("Erro","O numero permitido de pessoas é apenas de 9");
-    }
+else if ($n_visitantes < 1 || $n_visitantes > 9) {
+    mensagem("Erro", "O numero permitido de pessoas é apenas de 9");
+}
 
 if (empty($produto))
     mensagem("Erro", "Preencha o produto");
 
 
 $data = formatarData($data);
+
+
+/* validação de horas e datas
+
+- Se a data inserida pelo usuario for maior a data atual deixa por qualquer horario.
+
+- Se a data inserida for igual a data atual, ele deixa inserir apenas horarios iguais ou apos a hora atual.
+
+- Se a data for anterior a data atual o sistema mostra uma mensagem de erro 
+
+*/
+$dataAtual = date('Y-m-d');
+$horaAtual = date('H:i');
+
+// Data inserida é maior do que a data atual
+if ($data < $dataAtual) {
+    mensagem("Erro", "A data não pode ser anterior à data atual");
+} elseif ($data == $dataAtual && $hora < $horaAtual) {
+    mensagem("Erro", "A hora não pode ser anterior à hora atual para esta data");
+}
+
+
+
 
 
 

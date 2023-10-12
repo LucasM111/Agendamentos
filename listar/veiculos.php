@@ -3,6 +3,7 @@ if (!isset($pagina))
     exit;
 ?> 
 
+<div class="cadastramento">
 <div class="card">
     <div class="card-header">
         <strong>Listagem de Veiculos</strong>
@@ -44,6 +45,7 @@ if (!isset($pagina))
             </tbody>
         </table>
     </div>
+</div>
 </div>
 <script>
     //iniciar o dataTables

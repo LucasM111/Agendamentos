@@ -20,50 +20,42 @@ $sobrenome = $dados->sobrenome ?? NULL;
 
 
 
+<div class="cadastramento">
+    <div class="card">
+        <div class="card-header">
+            <strong>Cadastro de Motoristas</strong>
 
-<div class="card">
-    <div class="card-header">
-        <strong>Cadastro de Motoristas</strong>
+            <div class="float-end">
+                <a href="cadastrar/motoristas" class="btn btn-success btn-sm" title="Novo registro">
+                    <i class="fas fa-file"></i> Cadastrar Motorista
+                </a>
+                <a href="listar/motoristas" class="btn btn-info btn-sm">
+                    <i class="fas fa-search"></i> Listar Cadastros
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <form name="formveiculos" method="post" action="salvar/motoristas" data-parsley-validate="">
+                <br>
 
-        <div class="float-end">
-            <a href="cadastrar/motoristas" class="btn btn-success btn-sm" title="Novo registro">
-                <i class="fas fa-file"></i> Cadastrar Motorista
-            </a>
-            <a href="listar/motoristas" class="btn btn-info btn-sm">
-                <i class="fas fa-search"></i> Listar Cadastros
-            </a>
+                <!-- Nome -->
+                <label for="nome">Digite o Nome Motorista:</label>
+                <input type="text" name="nome" id="nome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <br>
+
+                <!-- Sobrenome -->
+                <label for="sobrenome">Digite Sobrenome do Motorista:</label>
+                <input type="text" name="sobrenome" id="sobrenome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <br>
+
+
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-check"></i> Salvar Dados
+                </button>
+            </form>
+            <br>
         </div>
     </div>
-    <div class="card-body">
-        <form name="formveiculos" method="post" action="salvar/motoristas" data-parsley-validate="">
-            <br>
-
-            <!-- ID -->
-            <label for="id">ID:</label>
-            <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>">
-            <br>
-
-            <!-- Nome -->
-            <label for="nome">Digite o Nome Motorista:</label>
-            <input type="text" name="nome" id="nome" class="form-control" required
-                data-parsley-required-message="Por favor, preencha este campo" value="">
-            <br>
-
-            <!-- Sobrenome -->
-            <label for="sobrenome">Digite Sobrenome do Motorista:</label>
-            <input type="text" name="sobrenome" id="sobrenome" class="form-control" required
-                data-parsley-required-message="Por favor, preencha este campo" value="">
-            <br>
-
-
-            <button type="submit" class="btn btn-success">
-                <i class="fas fa-check"></i> Salvar Dados
-            </button>
-        </form>
-        <br>
-
-        <form name="formvoltar" method="post" action="home">
-            <button type="submit" class="btn btn-secondary">Voltar</button>
-        </form>
-    </div>
 </div>
+<br>
+<br>
