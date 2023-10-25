@@ -54,17 +54,12 @@ $nomeCompleto = $nome;
 if (validarNomeSobrenome($nomeCompleto)) {
 
 
-    $data = formatarData($data);
+
 
     if (diaUtil($data)) {
 
-        /* validação de horas e datas
+        $data = formatarData($data);
 
-- Se a data inserida pelo usuario for maior a data atual deixa por qualquer horario.
-- Se a data inserida for igual a data atual, ele deixa inserir apenas horarios iguais ou apos a hora atual.
-- Se a data for anterior a data atual o sistema mostra uma mensagem de erro 
-
-*/
         $dataAtual = date('Y-m-d');
         $horaAtual = date('H:i');
 
@@ -73,6 +68,8 @@ if (validarNomeSobrenome($nomeCompleto)) {
             mensagem("Erro", "A data não pode ser anterior à data atual");
         } elseif ($data == $dataAtual && $hora < $horaAtual) {
             mensagem("Erro", "A hora não pode ser anterior à hora atual para esta data");
+        } elseif (!(($hora >= '08:00' && $hora <= '12:00') || ($hora >= '13:30' && $hora <= '18:00'))) {
+            mensagem("Erro", "Cadastro fora do horário permitido (08:00 ao 12:00 e 13:30 ás 18:00)");
         }
 
         //verificar se vamos dar um insert ou um update

@@ -1,5 +1,6 @@
 <?php
 require 'configs/functions.php';
+require 'configs/validacao.php';
 
 
 if (!isset($pagina))
@@ -49,7 +50,7 @@ $produto = $dados->produto ?? NULL;
 
 
                     <!-- Nome -->
-                    <label for="nome">Digite o nome do visitante:</label>
+                    <label for="nome">Nome e Sobrenome do agendante:</label>
                     <input type="text" maxlength="100" name="nome" id="nome" class="form-control" required
                         data-parsley-required-message="Por favor, preencha este campo" value="">
                     <br>

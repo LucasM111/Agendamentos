@@ -39,7 +39,7 @@ $categoria = $dados->categoria ?? NULL;
                 data-parsley-validate="">
                 <br>
 
-                <label for="nome">Nome de Usuário:</label>
+                <label for="nome">Nome e Sobrenome de Usuário:</label>
                 <input type="text" maxlength="100" name="nome" id="nome" class="form-control" required
                     value="<?= $nome ?>" data-parsley-required-message="Preencha o nome">
                 <br>
