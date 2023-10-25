@@ -24,22 +24,16 @@ $produto = trim($_POST["produto"] ?? NULL);
 //verificar se esses campos estão em branco
 if (empty($nome))
     mensagem("Erro", "Preencha o nome");
-
 if (empty($veiculo))
     mensagem("Erro", "Preencha o veiculo");
-
 if (empty($motorista))
     mensagem("Erro", "Preencha o motorista");
-
 if (empty($data))
     mensagem("Erro", "Preencha a data");
-
 if (empty($hora))
     mensagem("Erro", "Preencha a hora");
-
 if (empty($motivo))
     mensagem("Erro", "Preencha o motivo");
-
 if (empty($n_visitantes))
     mensagem("Erro", "Preencha o numero de visitantes");
 else if ($n_visitantes < 1 || $n_visitantes > 9) {
@@ -52,9 +46,6 @@ if (empty($produto))
 
 $nomeCompleto = $nome;
 if (validarNomeSobrenome($nomeCompleto)) {
-
-
-
 
     if (diaUtil($data)) {
 

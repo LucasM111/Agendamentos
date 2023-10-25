@@ -1,4 +1,5 @@
 <?php
+
 function diaUtil($data)
 {
     // Verifique se a data é sábado ou domingo (6 ou 0 no formato w)
@@ -19,3 +20,22 @@ function diaUtil($data)
     // Se a data não for sábado, domingo ou feriado, é um dia útil
     return true;
 }
+
+
+/*
+FERIADOS LISTADOS:
+
+01/01 -	Confraternização Universal
+26/02 -	Carnaval
+27/02 -	Carnaval
+13/04 -	Paixão de Cristo
+21/04 -	Tiradentes
+01/05 -	Dia do Trabalho
+14/06 -	Corpus Christi
+07/09 -	Independência do Brasil
+12/10 -	Nossa Sr.a Aparecida - Padroeira do Brasil
+02/11 -	Finados
+15/11 -	Proclamação da República
+25/12 -	Natal
+
+*/
