@@ -17,6 +17,8 @@ $id = $dados->id ?? NULL;
 $nome = $dados->nome ?? NULL;
 $login = $dados->login ?? NULL;
 $ativo = $dados->ativo ?? NULL;
+$categoria = $dados->categoria ?? NULL;
+
 
 ?>
 <div class="cadastramento">
@@ -28,7 +30,7 @@ $ativo = $dados->ativo ?? NULL;
                     <i class="fas fa-file"></i> Novo Cadastro
                 </a>
                 <a href="listar/usuarios" class="btn btn-info btn-sm">
-                    <i class="fas fa-search"></i> Listar Cadastros
+                    <i class="fas fa-search"></i> Lista de Usuários
                 </a>
             </div>
         </div>
@@ -38,21 +40,27 @@ $ativo = $dados->ativo ?? NULL;
                 <br>
 
                 <label for="nome">Nome de Usuário:</label>
-                <input type="text" name="nome" id="nome" class="form-control" required value="<?= $nome ?>"
-                    data-parsley-required-message="Preencha o nome">
+                <input type="text" maxlength="100" name="nome" id="nome" class="form-control" required
+                    value="<?= $nome ?>" data-parsley-required-message="Preencha o nome">
                 <br>
 
                 <label for="login">Login de Usuário:</label>
-                <input type="text" name="login" id="login" class="form-control" required value="<?= $login ?>"
-                    data-parsley-required-message="Preencha o login">
+                <input type="text" maxlength="100" name="login" id="login" class="form-control" required
+                    value="<?= $login ?>" data-parsley-required-message="Preencha o login">
                 <br>
 
                 <label for="senha">Senha de Usuário:</label>
-                <input type="password" name="senha" id="senha" class="form-control">
+                <input type="password" maxlength="8" name="senha" id="senha" class="form-control">
                 <br>
+                <div class="regra-senha">
+                    <p>A senha deverá conter pelo menos:</p>
+                    <p>1 Letra Maiuscúla</p>
+                    <p>1 Letra Minuscúla</p>
+                    <p>1 Número</p>
+                </div>
 
                 <label for="senha2">Redigite a Senha de Usuário:</label>
-                <input type="password" name="senha2" id="senha2" class="form-control">
+                <input type="password" maxlength="8" name="senha2" id="senha2" class="form-control">
                 <br>
 
                 <label for="ativo">Ativo?</label>

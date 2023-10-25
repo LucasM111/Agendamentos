@@ -112,6 +112,10 @@ header .menu {
     display: none;
   }
 
+  .bem-vindo-img {
+    display: none;
+  }
+
 
 
 }
@@ -337,4 +341,14 @@ header .menu {
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--black1)
+}
+
+.regra-senha p {
+  color: var(--black2);
+}
+
+.Sair {
+  color: var(--white);
+  cursor: pointer;
+
 }

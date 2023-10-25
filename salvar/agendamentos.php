@@ -1,5 +1,6 @@
 <?php
 require "configs/functions.php";
+require "configs/validacao.php";
 
 if (!isset($pagina))
     exit;
@@ -49,64 +50,69 @@ if (empty($produto))
     mensagem("Erro", "Preencha o produto");
 
 
-$data = formatarData($data);
+$nomeCompleto = $nome;
+if (validarNomeSobrenome($nomeCompleto)) {
 
 
-/* validação de horas e datas
+    $data = formatarData($data);
+
+    if (diaUtil($data)) {
+
+        /* validação de horas e datas
 
 - Se a data inserida pelo usuario for maior a data atual deixa por qualquer horario.
-
 - Se a data inserida for igual a data atual, ele deixa inserir apenas horarios iguais ou apos a hora atual.
-
 - Se a data for anterior a data atual o sistema mostra uma mensagem de erro 
 
 */
-$dataAtual = date('Y-m-d');
-$horaAtual = date('H:i');
+        $dataAtual = date('Y-m-d');
+        $horaAtual = date('H:i');
 
-// Data inserida é maior do que a data atual
-if ($data < $dataAtual) {
-    mensagem("Erro", "A data não pode ser anterior à data atual");
-} elseif ($data == $dataAtual && $hora < $horaAtual) {
-    mensagem("Erro", "A hora não pode ser anterior à hora atual para esta data");
-}
+        // Data inserida é maior do que a data atual
+        if ($data < $dataAtual) {
+            mensagem("Erro", "A data não pode ser anterior à data atual");
+        } elseif ($data == $dataAtual && $hora < $horaAtual) {
+            mensagem("Erro", "A hora não pode ser anterior à hora atual para esta data");
+        }
+
+        //verificar se vamos dar um insert ou um update
+        if (empty($id)) {
+            //insert
+            $sql = "insert into agendamentos values (NULL, :nome, :veiculo, :motorista, :data, :hora, :motivo, :n_visitantes, :produto)";
+            $consulta = $pdo->prepare($sql);
+            $consulta->bindParam(":nome", $nome);
+            $consulta->bindParam(":veiculo", $veiculo);
+            $consulta->bindParam(":motorista", $motorista);
+            $consulta->bindParam(":data", $data);
+            $consulta->bindParam(":hora", $hora);
+            $consulta->bindParam(":motivo", $motivo);
+            $consulta->bindParam(":n_visitantes", $n_visitantes);
+            $consulta->bindParam(":produto", $produto);
+        } else {
+            //update
+            $sql = "update agendamentos set nome = :nome, veiculo = :veiculo, motorista = :motorista, data = :data, hora = :hora, motivo = :motivo, n_visitantes = :n_visitantes, produto = :produto where id = :id limit 1";
+            $consulta = $pdo->prepare($sql);
+            $consulta->bindParam(":nome", $nome);
+            $consulta->bindParam(":veiculo", $veiculo);
+            $consulta->bindParam(":motorista", $motorista);
+            $consulta->bindParam(":data", $data);
+            $consulta->bindParam(":hora", $hora);
+            $consulta->bindParam(":motivo", $motivo);
+            $consulta->bindParam(":n_visitantes", $n_visitantes);
+            $consulta->bindParam(":produto", $produto);
+        }
 
 
 
-
-
-
-//verificar se vamos dar um insert ou um update
-if (empty($id)) {
-    //insert
-    $sql = "insert into agendamentos values (NULL, :nome, :veiculo, :motorista, :data, :hora, :motivo, :n_visitantes, :produto)";
-    $consulta = $pdo->prepare($sql);
-    $consulta->bindParam(":nome", $nome);
-    $consulta->bindParam(":veiculo", $veiculo);
-    $consulta->bindParam(":motorista", $motorista);
-    $consulta->bindParam(":data", $data);
-    $consulta->bindParam(":hora", $hora);
-    $consulta->bindParam(":motivo", $motivo);
-    $consulta->bindParam(":n_visitantes", $n_visitantes);
-    $consulta->bindParam(":produto", $produto);
+        if ($consulta->execute()) {
+            mensagem("Sucesso", "Registro salvo/alterado com sucesso");
+        } else {
+            mensagem("Erro", "Não foi possível salvar ou alterar o registro");
+        }
+    } else {
+        // A data de cadastro não é um dia útil
+        mensagem("Erro", "Não é possível cadastrar em sábados, domingos ou feriados.");
+    }
 } else {
-    //update
-    $sql = "update agendamentos set nome = :nome, veiculo = :veiculo, motorista = :motorista, data = :data, hora = :hora, motivo = :motivo, n_visitantes = :n_visitantes, produto = :produto where id = :id limit 1";
-    $consulta = $pdo->prepare($sql);
-    $consulta->bindParam(":nome", $nome);
-    $consulta->bindParam(":veiculo", $veiculo);
-    $consulta->bindParam(":motorista", $motorista);
-    $consulta->bindParam(":data", $data);
-    $consulta->bindParam(":hora", $hora);
-    $consulta->bindParam(":motivo", $motivo);
-    $consulta->bindParam(":n_visitantes", $n_visitantes);
-    $consulta->bindParam(":produto", $produto);
-}
-
-
-
-if ($consulta->execute()) {
-    mensagem("Sucesso", "Registro salvo/alterado com sucesso");
-} else {
-    mensagem("Erro", "Não foi possível salvar ou alterar o registro");
+    mensagem("Erro", "Preencha um Nome e Sobrenome válidos.");
 }

@@ -73263,8 +73263,8 @@ DateTime.defaults = {
 
 	i18n: {
 		clear:    'Clear',
-		previous: 'Previous',
-		next:     'Next',
+		previous: 'Anterior',
+		next:     'Proximo',
 		months:   [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
 		weekdays: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
 		amPm:     [ 'am', 'pm' ],

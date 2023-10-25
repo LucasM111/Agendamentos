@@ -38,7 +38,7 @@ $produto = $dados->produto ?? NULL;
                         <i class="fas fa-file"></i> Novo Agendamento
                     </a>
                     <a href="listar/agendamentos" class="btn btn-info btn-sm">
-                        <i class="fas fa-search"></i> Listar Agendamento
+                        <i class="fas fa-search"></i> Lista de Agendamentos
                     </a>
                 </div>
             </div>
@@ -48,10 +48,9 @@ $produto = $dados->produto ?? NULL;
                 <form name="formagendamentos" method="post" action="salvar/agendamentos" data-parsley-validate="">
 
 
-
                     <!-- Nome -->
                     <label for="nome">Digite o nome do visitante:</label>
-                    <input type="text" name="nome" id="nome" class="form-control" required
+                    <input type="text" maxlength="100" name="nome" id="nome" class="form-control" required
                         data-parsley-required-message="Por favor, preencha este campo" value="">
                     <br>
 
@@ -61,19 +60,19 @@ $produto = $dados->produto ?? NULL;
                         data-parsley-required-message="Selecione um veiculo">
                         <option value="">Selecione</option>
                         <?php
-                    $sqlVeiculo = "Select * from veiculos order by Modelo";
-                    $consultaVeiculo = $pdo->prepare($sqlVeiculo);
-                    $consultaVeiculo->execute();
+                        $sqlVeiculo = "Select * from veiculos order by Modelo";
+                        $consultaVeiculo = $pdo->prepare($sqlVeiculo);
+                        $consultaVeiculo->execute();
 
-                    while ($dadosVeiculo = $consultaVeiculo->fetch(PDO::FETCH_OBJ)) {
-                    ?>
+                        while ($dadosVeiculo = $consultaVeiculo->fetch(PDO::FETCH_OBJ)) {
+                        ?>
                         <option value="<?= $dadosVeiculo->Modelo ?>">
                             <?= $dadosVeiculo->Modelo ?>
                         </option>
 
                         <?php
-                    }
-                    ?>
+                        }
+                        ?>
                     </select>
                     <br>
 
@@ -84,19 +83,19 @@ $produto = $dados->produto ?? NULL;
                         data-parsley-required-message="Selecione um Motorista">
                         <option value="">Selecione</option>
                         <?php
-                    $sqlMotorista = "Select * from motoristas order by nome";
-                    $consultaMotorista = $pdo->prepare($sqlMotorista);
-                    $consultaMotorista->execute();
+                        $sqlMotorista = "Select * from motoristas order by nome";
+                        $consultaMotorista = $pdo->prepare($sqlMotorista);
+                        $consultaMotorista->execute();
 
-                    while ($dadosMotorista = $consultaMotorista->fetch(PDO::FETCH_OBJ)) {
-                    ?>
+                        while ($dadosMotorista = $consultaMotorista->fetch(PDO::FETCH_OBJ)) {
+                        ?>
                         <option value="<?= $dadosMotorista->nome ?>">
                             <?= $dadosMotorista->nome ?>
                         </option>
 
                         <?php
-                    }
-                    ?>
+                        }
+                        ?>
                     </select>
                     <br>
 
@@ -135,7 +134,7 @@ $produto = $dados->produto ?? NULL;
 
                     <!-- Produto a ser transportado, seja ele coleta, ou entrega -->
                     <label for="produto">Produto</label>
-                    <input type="text" name="produto" id="produto" class="form-control" required
+                    <input type="text" maxlength="100" name="produto" id="produto" class="form-control" required
                         data-parsley-required-message="Por favor, preencha este campo" value="">
                     <br>
 

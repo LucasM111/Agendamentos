@@ -11,6 +11,9 @@ if (!$_POST)
 // print_r($_POST);
 $id = trim($_POST["id"] ?? NULL);
 $modelo = trim($_POST["modelo"] ?? NULL);
+if (!validarModeloCarro($modelo)) {
+    mensagem("Erro", "Modelo do carro Invalido");
+}
 $placa = trim($_POST["placa"] ?? NULL);
 if (!validarPlaca($placa)) {
     mensagem("Erro", "Placa inválida");

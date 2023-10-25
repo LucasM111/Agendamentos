@@ -22,6 +22,11 @@ if (empty($nome))
 if (empty($sobrenome))
     mensagem("Erro", "Preencha a placa");
 
+if (!preg_match('/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/', $nome))
+    mensagem("Erro", "Insira um Nome Válido");
+
+if (!preg_match('/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/', $sobrenome))
+    mensagem("Erro", "Insira um Sobrenome Válido");
 
 
 //verificar se vamos dar um insert ou um update

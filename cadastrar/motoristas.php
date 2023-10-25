@@ -30,7 +30,7 @@ $sobrenome = $dados->sobrenome ?? NULL;
                     <i class="fas fa-file"></i> Cadastrar Motorista
                 </a>
                 <a href="listar/motoristas" class="btn btn-info btn-sm">
-                    <i class="fas fa-search"></i> Listar Cadastros
+                    <i class="fas fa-search"></i> Lista de Motoristas
                 </a>
             </div>
         </div>
@@ -40,12 +40,14 @@ $sobrenome = $dados->sobrenome ?? NULL;
 
                 <!-- Nome -->
                 <label for="nome">Digite o Nome Motorista:</label>
-                <input type="text" name="nome" id="nome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" maxlength="100" name="nome" id="nome" class="form-control" required
+                    data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
                 <!-- Sobrenome -->
                 <label for="sobrenome">Digite Sobrenome do Motorista:</label>
-                <input type="text" name="sobrenome" id="sobrenome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" maxlength="100" name="sobrenome" id="sobrenome" class="form-control" required
+                    data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
 

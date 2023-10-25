@@ -28,7 +28,7 @@ $placa = $dados->placa ?? NULL;
                     <i class="fas fa-file"></i> Novo Veiculo
                 </a>
                 <a href="listar/veiculos" class="btn btn-info btn-sm">
-                    <i class="fas fa-search"></i> Listar Veiculo
+                    <i class="fas fa-search"></i> Lista de Veiculos
                 </a>
             </div>
         </div>
@@ -38,12 +38,14 @@ $placa = $dados->placa ?? NULL;
 
                 <!-- Modelo -->
                 <label for="modelo">Digite o Modelo do Veiculo:</label>
-                <input type="text" name="modelo" id="modelo" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" maxlength="100" name="modelo" id="modelo" class="form-control" required
+                    data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
                 <!-- Placa -->
                 <label for="placa">Placa do Veiculo</label>
-                <input type="text" name="placa" id="placa" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" name="placa" id="placa" class="form-control" required
+                    data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
                 <button type="submit" class="btn btn-success">

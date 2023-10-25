@@ -6,7 +6,7 @@ if (!isset($pagina))
 </head>
 
 <br>
-<h2 class="text-center">Olá, <?= $_SESSION["usuarioAdm"]["nome"] ?>, <p>Seja bem vindo(a)</p>
+<h2 class="text-center">Olá, <?= $_SESSION["usuarioAdm"]["nome"] ?>! <p>Seja bem vindo(a)</p>
 </h2>
 
 
