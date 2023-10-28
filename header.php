@@ -11,7 +11,7 @@ if (!isset($pagina)) {
     </div>
     <ul>
         <li><a href="pages/home">Home</a></li>
-        <li><a href="pages/help">Help</a></li>
+        <li><a href="pages/help">Ajuda</a></li>
         <li><a href="pages/sobre">Sobre</a></li>
         <li><a href="cadastrar/motoristas">+ Motoristas</a></li>
         <li><a href="cadastrar/veiculos">+ Veiculos</a></li>
@@ -28,19 +28,19 @@ if (!isset($pagina)) {
 </header>
 
 <script>
-function confirmarSaida() {
-    Swal.fire({
-        title: 'Você realmente deseja sair?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Sim',
-        cancelButtonText: 'Não'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = "sair.php";
-        } else {
-            window.location.href = "home";
-        }
-    });
-}
+    function confirmarSaida() {
+        Swal.fire({
+            title: 'Você realmente deseja sair?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "sair.php";
+            } else {
+                window.location.href = "home";
+            }
+        });
+    }
 </script>

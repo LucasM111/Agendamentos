@@ -38,28 +38,28 @@ if (!isset($pagina))
                 <tbody>
                     <!-- date_format(v.data,'%d/%m/%Y') data -->
                     <?php
-                    $sqlAgendamentos = "select id, date_format(data,'%d/%m/%Y') data, Nome, veiculo, motorista, hora, motivo, n_visitantes, produto from agendamentos  order by data desc";
+                    $sqlAgendamentos = "select id, date_format(data,'%d/%m/%Y') data, Nome, veiculo, motorista, hora, motivo, n_visitantes, produto from agendamentos order by data desc";
                     $consultaAgendamento = $pdo->prepare($sqlAgendamentos);
                     $consultaAgendamento->execute();
 
                     while ($d = $consultaAgendamento->fetch(PDO::FETCH_OBJ)) {
                     ?>
-                    <tr>
-                        <td><?= $d->id ?></td>
-                        <td><?= $d->data ?></td>
-                        <td><?= $d->Nome ?></td>
-                        <td><?= $d->veiculo ?></td>
-                        <td><?= $d->motorista ?></td>
-                        <td><?= $d->hora ?></td>
-                        <td><?= $d->motivo ?></td>
-                        <td><?= $d->n_visitantes ?></td>
-                        <td><?= $d->produto ?></td>
-                        <td class="text-center">
-                            <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?= $d->id ?></td>
+                            <td><?= $d->data ?></td>
+                            <td><?= $d->Nome ?></td>
+                            <td><?= $d->veiculo ?></td>
+                            <td><?= $d->motorista ?></td>
+                            <td><?= $d->hora ?></td>
+                            <td><?= $d->motivo ?></td>
+                            <td><?= $d->n_visitantes ?></td>
+                            <td><?= $d->produto ?></td>
+                            <td class="text-center">
+                                <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
 
                     <?php
 
@@ -73,31 +73,31 @@ if (!isset($pagina))
 <br>
 <br>
 <script>
-//iniciar o dataTables
-$(document).ready(function() {
-    $(".table").DataTable({
-        language: {
-            lengthMenu: 'Mostrar _MENU_ registros por página',
-            zeroRecords: 'Sem resultados encontrados',
-            info: 'Mostrando página _PAGE_ de _PAGES_',
-            infoEmpty: 'Nenhum resultado',
-            infoFiltered: '(Filtrando de _MAX_ resultados)',
-            search: 'Busca',
-        },
-    });
-})
-
-function excluir(id) {
-    Swal.fire({
-        icon: "warning",
-        title: "Você deseja mesmo excluir este registro?",
-        showCancelButton: true,
-        confirmButtonText: "Excluir",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            location.href = "excluir/agendamentos/" + id;
-        }
+    //iniciar o dataTables
+    $(document).ready(function() {
+        $(".table").DataTable({
+            language: {
+                lengthMenu: 'Mostrar _MENU_ registros por página',
+                zeroRecords: 'Sem resultados encontrados',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'Nenhum resultado',
+                infoFiltered: '(Filtrando de _MAX_ resultados)',
+                search: 'Busca',
+            },
+        });
     })
-}
+
+    function excluir(id) {
+        Swal.fire({
+            icon: "warning",
+            title: "Você deseja mesmo excluir este registro?",
+            showCancelButton: true,
+            confirmButtonText: "Excluir",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "excluir/agendamentos/" + id;
+            }
+        })
+    }
 </script>
