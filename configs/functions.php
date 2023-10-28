@@ -91,9 +91,17 @@ function validarNomeSobrenome($nomeCompleto)
 
 function validarModeloCarro($modelo)
 {
-	if (preg_match('/^[A-Za-z0-9\s\-_,.&()]+$/', $modelo)) {
+	if (preg_match('/^(.*[A-Za-z]){3}[A-Za-z0-9\s\-_,.&()]*$/', $modelo)) {
 		return true;
 	} else {
 		return false;
 	}
+}
+
+function validarLogin($login) {
+    if (strlen($login) >= 5 && ctype_alnum($login)) {
+        return true;
+    } else {
+        return false;
+    }
 }

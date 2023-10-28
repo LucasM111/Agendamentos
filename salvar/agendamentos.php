@@ -98,7 +98,7 @@ if (validarNomeSobrenome($nome)) {
         }
     } else {
         // A data de cadastro não é um dia útil
-        mensagem("Erro", "Não é possível cadastrar em sábados, domingos ou feriados.");
+        mensagem("Erro", "Não é Possível Cadastrar em Sábados, Domingos e Feriados.");
     }
 } else {
     mensagem("Erro", "Preencha um Nome e Sobrenome válidos.");

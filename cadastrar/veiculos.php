@@ -38,13 +38,13 @@ $placa = $dados->placa ?? NULL;
 
                 <!-- Modelo -->
                 <label for="modelo">Digite o Modelo do Veiculo:</label>
-                <input type="text" maxlength="100" name="modelo" id="modelo" class="form-control" required
+                <input type="text" maxlength="20" name="modelo" id="modelo" class="form-control" required
                     data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
                 <!-- Placa -->
                 <label for="placa">Placa do Veiculo</label>
-                <input type="text" name="placa" id="placa" class="form-control" required
+                <input type="text" maxlength="20" name="placa" id="placa" class="form-control" required
                     data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
