@@ -48,12 +48,16 @@ $categoria = $dados->categoria ?? NULL;
 
                 <label for="senha">Senha de Usuário:</label>
                 <input type="password" maxlength="8" name="senha" id="senha" class="form-control">
-                <br>
                 <div class="regra-senha">
-                    <p>A senha deverá conter pelo menos:</p>
-                    <p>1 Letra Maiuscúla</p>
-                    <p>1 Letra Minuscúla</p>
-                    <p>1 Número</p>
+                    <p>
+                        <strong>
+                            A Senha Deverá Conter Pelo Menos:
+                        </strong><br>
+                        No Máximo 8 Caracteres<br>
+                        1 Letra Maiuscúla<br>
+                        1 Letra Minuscúla<br>
+                        1 Número
+                    </p>
                 </div>
 
                 <label for="senha2">Redigite a Senha de Usuário:</label>
