@@ -43,13 +43,12 @@ else if ($n_visitantes < 1 || $n_visitantes > 9) {
 if (empty($produto))
     mensagem("Erro", "Preencha o produto");
 
-
-$nomeCompleto = $nome;
-if (validarNomeSobrenome($nomeCompleto)) {
+$data = formatarData($data);
+if (validarNomeSobrenome($nome)) {
 
     if (diaUtil($data)) {
 
-        $data = formatarData($data);
+
 
         $dataAtual = date('Y-m-d');
         $horaAtual = date('H:i');
