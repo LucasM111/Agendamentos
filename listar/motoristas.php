@@ -34,15 +34,15 @@ if (!isset($pagina))
 
                     while ($d = $consultaMotoristas->fetch(PDO::FETCH_OBJ)) {
                     ?>
-                        <tr>
-                            <td><?= $d->nome ?></td>
-                            <td><?= $d->sobrenome ?></td>
-                            <td class="text-center">
-                                <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td><?= $d->nome ?></td>
+                        <td><?= $d->sobrenome ?></td>
+                        <td class="text-center">
+                            <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
 
                     <?php
                     }
@@ -52,32 +52,34 @@ if (!isset($pagina))
         </div>
     </div>
 </div>
+<br>
+<br>
 <script>
-    //iniciar o dataTables
-    $(document).ready(function() {
-        $(".table").DataTable({
-            language: {
-                lengthMenu: 'Mostrar _MENU_ registros por página',
-                zeroRecords: 'Sem resultados encontrados',
-                info: 'Mostrando página _PAGE_ de _PAGES_',
-                infoEmpty: 'Nenhum resultado',
-                infoFiltered: '(Filtrando de _MAX_ resultados)',
-                search: 'Busca',
-            },
-        });
-    })
+//iniciar o dataTables
+$(document).ready(function() {
+    $(".table").DataTable({
+        language: {
+            lengthMenu: 'Mostrar _MENU_ registros por página',
+            zeroRecords: 'Sem resultados encontrados',
+            info: 'Mostrando página _PAGE_ de _PAGES_',
+            infoEmpty: 'Nenhum resultado',
+            infoFiltered: '(Filtrando de _MAX_ resultados)',
+            search: 'Busca',
+        },
+    });
+})
 
-    function excluir(id) {
-        Swal.fire({
-            icon: "warning",
-            title: "Você deseja mesmo excluir este registro?",
-            showCancelButton: true,
-            confirmButtonText: "Excluir",
-            cancelButtonText: "Cancelar",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                location.href = "excluir/motorista/" + id;
-            }
-        })
-    }
+function excluir(id) {
+    Swal.fire({
+        icon: "warning",
+        title: "Você deseja mesmo excluir este registro?",
+        showCancelButton: true,
+        confirmButtonText: "Excluir",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = "excluir/motorista/" + id;
+        }
+    })
+}
 </script>
