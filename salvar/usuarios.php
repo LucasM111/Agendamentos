@@ -55,7 +55,7 @@ if (validarLogin($login)) {
                 $consulta->bindParam(":ativo", $ativo);
                 $consulta->bindParam(":categoria", $categoria);
             } else if (empty($senha)) {
-                //update menos na foto
+                //update menos na senha
                 $sql = "update usuarios set nome = :nome, login =:login,
             ativo = :ativo, categoria = :categoria where id = :id LIMIT 1";
                 $consulta = $pdo->prepare($sql);
@@ -65,8 +65,8 @@ if (validarLogin($login)) {
                 $consulta->bindParam(":categoria", $categoria);
                 $consulta->bindParam(":id", $id);
             } else {
+                // update junto com a senha
                 $senha = password_hash($senha, PASSWORD_DEFAULT);
-                //mudar todos os campos, inclusive a foto
                 $sql = "update usuarios set nome = :nome, login =:login,
             ativo = :ativo, senha = :senha, categoria = :categoria where id = :id LIMIT 1";
                 $consulta = $pdo->prepare($sql);

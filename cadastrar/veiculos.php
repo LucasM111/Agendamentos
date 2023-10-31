@@ -13,7 +13,7 @@ if (!empty($id)) {
 }
 
 $id = $dados->id ?? NULL;
-$modelo = $dados->modelo ?? NULL;
+$modelo = $dados->Modelo ?? NULL;
 $placa = $dados->placa ?? NULL;
 ?>
 
@@ -38,14 +38,12 @@ $placa = $dados->placa ?? NULL;
 
                 <!-- Modelo -->
                 <label for="modelo">Digite o Modelo do Veiculo:</label>
-                <input type="text" maxlength="20" name="modelo" id="modelo" class="form-control" required
-                    data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" maxlength="20" name="modelo" id="modelo" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $modelo ?>">
                 <br>
 
                 <!-- Placa -->
                 <label for="placa">Placa do Veiculo</label>
-                <input type="text" maxlength="20" name="placa" id="placa" class="form-control" required
-                    data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" maxlength="20" name="placa" id="placa" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $placa ?>">
                 <br>
 
                 <button type="submit" class="btn btn-success">

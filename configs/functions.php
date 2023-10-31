@@ -1,5 +1,6 @@
 <?php
 
+
 function mensagem($titulo, $msg)
 {
 	echo "
@@ -98,10 +99,13 @@ function validarModeloCarro($modelo)
 	}
 }
 
-function validarLogin($login) {
-    if (strlen($login) >= 5 && ctype_alnum($login)) {
-        return true;
-    } else {
-        return false;
-    }
+function validarLogin($login)
+{
+	if (strlen($login) >= 5 && ctype_alnum($login)) {
+		return true;
+	} else {
+		return false;
+	}
 }
+
+// Função para verificar se já existe um agendamento para a mesma data e hora

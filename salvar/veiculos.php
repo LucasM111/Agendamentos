@@ -26,8 +26,6 @@ if (empty($modelo))
 if (empty($placa))
     mensagem("Erro", "Preencha o placa");
 
-
-
 //verificar se vamos dar um insert ou um update
 if (empty($id)) {
     //insert
@@ -37,10 +35,11 @@ if (empty($id)) {
     $consulta->bindParam(":placa", $placa);
 } else {
     //update
-    $sql = "update veiculos set modelo = :modelo, placa = :placa where id = :id limit 1";
+    $sql = "update veiculos set Modelo = :modelo, placa = :placa where id = :id limit 1";
     $consulta = $pdo->prepare($sql);
     $consulta->bindParam(":modelo", $modelo);
     $consulta->bindParam(":placa", $placa);
+    $consulta->bindParam(":id", $id);
 }
 
 if ($consulta->execute()) {

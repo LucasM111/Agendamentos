@@ -43,63 +43,79 @@ else if ($n_visitantes < 1 || $n_visitantes > 9) {
 if (empty($produto))
     mensagem("Erro", "Preencha o produto");
 
+
+
 $data = formatarData($data);
-if (validarNomeSobrenome($nome)) {
+// Verificar se já existe um agendamento para a data e horário especificados
+$sql_verificacao = "SELECT COUNT(*) AS count FROM agendamentos WHERE data = :data AND hora = :hora";
+$consulta_verificacao = $pdo->prepare($sql_verificacao);
+$consulta_verificacao->bindParam(":data", $data);
+$consulta_verificacao->bindParam(":hora", $hora);
+$consulta_verificacao->execute();
+$resultado_verificacao = $consulta_verificacao->fetch(PDO::FETCH_ASSOC);
 
-    if (diaUtil($data)) {
+if ($resultado_verificacao['count'] > 0) {
+    mensagem("Erro", "Já existe um agendamento para a data e hora especificadas.");
+} else {
+
+
+    if (validarNomeSobrenome($nome)) {
+
+        if (diaUtil($data)) {
 
 
 
-        $dataAtual = date('Y-m-d');
-        $horaAtual = date('H:i');
+            $dataAtual = date('Y-m-d');
+            $horaAtual = date('H:i');
 
-        // Data inserida é maior do que a data atual
-        if ($data < $dataAtual) {
-            mensagem("Erro", "A data não pode ser anterior à data atual");
-        } elseif ($data == $dataAtual && $hora < $horaAtual) {
-            mensagem("Erro", "A hora não pode ser anterior à hora atual para esta data");
-        } elseif (!(($hora >= '08:00' && $hora <= '12:00') || ($hora >= '13:30' && $hora <= '18:00'))) {
-            mensagem("Erro", "Cadastro fora do horário permitido (08:00 ao 12:00 e 13:30 ás 18:00)");
-        }
+            // Data inserida é maior do que a data atual
+            if ($data < $dataAtual) {
+                mensagem("Erro", "A data não pode ser anterior à data atual");
+            } elseif ($data == $dataAtual && $hora < $horaAtual) {
+                mensagem("Erro", "A hora não pode ser anterior à hora atual para esta data");
+            } elseif (!(($hora >= '08:00' && $hora <= '12:00') || ($hora >= '13:30' && $hora <= '18:00'))) {
+                mensagem("Erro", "Cadastro fora do horário permitido (08:00 ao 12:00 e 13:30 ás 18:00)");
+            }
 
-        //verificar se vamos dar um insert ou um update
-        if (empty($id)) {
-            //insert
-            $sql = "insert into agendamentos values (NULL, :nome, :veiculo, :motorista, :data, :hora, :motivo, :n_visitantes, :produto)";
-            $consulta = $pdo->prepare($sql);
-            $consulta->bindParam(":nome", $nome);
-            $consulta->bindParam(":veiculo", $veiculo);
-            $consulta->bindParam(":motorista", $motorista);
-            $consulta->bindParam(":data", $data);
-            $consulta->bindParam(":hora", $hora);
-            $consulta->bindParam(":motivo", $motivo);
-            $consulta->bindParam(":n_visitantes", $n_visitantes);
-            $consulta->bindParam(":produto", $produto);
+            //verificar se vamos dar um insert ou um update
+            if (empty($id)) {
+                //insert
+                $sql = "insert into agendamentos values (NULL, :nome, :veiculo, :motorista, :data, :hora, :motivo, :n_visitantes, :produto)";
+                $consulta = $pdo->prepare($sql);
+                $consulta->bindParam(":nome", $nome);
+                $consulta->bindParam(":veiculo", $veiculo);
+                $consulta->bindParam(":motorista", $motorista);
+                $consulta->bindParam(":data", $data);
+                $consulta->bindParam(":hora", $hora);
+                $consulta->bindParam(":motivo", $motivo);
+                $consulta->bindParam(":n_visitantes", $n_visitantes);
+                $consulta->bindParam(":produto", $produto);
+            } else {
+                //update
+                $sql = "update agendamentos set nome = :nome, veiculo = :veiculo, motorista = :motorista, data = :data, hora = :hora, motivo = :motivo, n_visitantes = :n_visitantes, produto = :produto where id = :id limit 1";
+                $consulta = $pdo->prepare($sql);
+                $consulta->bindParam(":nome", $nome);
+                $consulta->bindParam(":veiculo", $veiculo);
+                $consulta->bindParam(":motorista", $motorista);
+                $consulta->bindParam(":data", $data);
+                $consulta->bindParam(":hora", $hora);
+                $consulta->bindParam(":motivo", $motivo);
+                $consulta->bindParam(":n_visitantes", $n_visitantes);
+                $consulta->bindParam(":produto", $produto);
+            }
+
+
+
+            if ($consulta->execute()) {
+                mensagem("Sucesso", "Registro salvo/alterado com sucesso");
+            } else {
+                mensagem("Erro", "Não foi possível salvar ou alterar o registro");
+            }
         } else {
-            //update
-            $sql = "update agendamentos set nome = :nome, veiculo = :veiculo, motorista = :motorista, data = :data, hora = :hora, motivo = :motivo, n_visitantes = :n_visitantes, produto = :produto where id = :id limit 1";
-            $consulta = $pdo->prepare($sql);
-            $consulta->bindParam(":nome", $nome);
-            $consulta->bindParam(":veiculo", $veiculo);
-            $consulta->bindParam(":motorista", $motorista);
-            $consulta->bindParam(":data", $data);
-            $consulta->bindParam(":hora", $hora);
-            $consulta->bindParam(":motivo", $motivo);
-            $consulta->bindParam(":n_visitantes", $n_visitantes);
-            $consulta->bindParam(":produto", $produto);
-        }
-
-
-
-        if ($consulta->execute()) {
-            mensagem("Sucesso", "Registro salvo/alterado com sucesso");
-        } else {
-            mensagem("Erro", "Não foi possível salvar ou alterar o registro");
+            // A data de cadastro não é um dia útil
+            mensagem("Erro", "Não é Possível Cadastrar em Sábados, Domingos e Feriados.");
         }
     } else {
-        // A data de cadastro não é um dia útil
-        mensagem("Erro", "Não é Possível Cadastrar em Sábados, Domingos e Feriados.");
+        mensagem("Erro", "Preencha um Nome e Sobrenome válidos.");
     }
-} else {
-    mensagem("Erro", "Preencha um Nome e Sobrenome válidos.");
 }

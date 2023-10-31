@@ -67,7 +67,7 @@ $produto = $dados->produto ?? NULL;
 
                         while ($dadosVeiculo = $consultaVeiculo->fetch(PDO::FETCH_OBJ)) {
                         ?>
-                        <option value="<?= $dadosVeiculo->Modelo ?><?= $dadosVeiculo->placa ?>">
+                        <option value="<?= $dadosVeiculo->Modelo ?> - Placa: <?= $dadosVeiculo->placa ?>">
                             <?= $dadosVeiculo->Modelo ?>
                             - Placa: <?= $dadosVeiculo->placa ?>
                         </option>
@@ -91,7 +91,7 @@ $produto = $dados->produto ?? NULL;
 
                         while ($dadosMotorista = $consultaMotorista->fetch(PDO::FETCH_OBJ)) {
                         ?>
-                        <option value="<?= $dadosMotorista->nome ?><?= $dadosMotorista->sobrenome ?>">
+                        <option value="<?= $dadosMotorista->nome ?> <?= $dadosMotorista->sobrenome ?>">
                             <?= $dadosMotorista->nome ?>
                             <?= $dadosMotorista->sobrenome ?>
                         </option>
