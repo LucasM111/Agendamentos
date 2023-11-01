@@ -110,8 +110,13 @@ $produto = $dados->produto ?? NULL;
 
                     <!-- Hora do Agendamento -->
                     <label for="hora">Hora</label>
-                    <input type="time" name="hora" id="hora" class="form-control" required
-                        data-parsley-required-message="Por favor, preencha este campo" value="">
+                    <select name="hora" id="hora" type="time">
+                        <option value=""></option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                    </select>
                     <br>
 
                     <!-- Motivo do Agendamento -->

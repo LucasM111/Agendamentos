@@ -36,6 +36,9 @@ $placa = $dados->placa ?? NULL;
             <form name="formveiculos" method="post" action="salvar/veiculos" data-parsley-validate="">
                 <br>
 
+                <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>" hidden>
+                <br>
+
                 <!-- Modelo -->
                 <label for="modelo">Digite o Modelo do Veiculo:</label>
                 <input type="text" maxlength="20" name="modelo" id="modelo" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $modelo ?>">
