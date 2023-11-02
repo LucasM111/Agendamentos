@@ -3,11 +3,11 @@ require 'configs/functions.php';
 
 // Verificar se a categoria do usuário é "funcionário" para permitir o acesso
 if ($_SESSION["usuarioAdm"]["categoria"] !== "Funcionario") {
-    // Redirecionar ou mostrar mensagem de erro
+    // Se não for funcionario
     mensagem("Erro", "Voce não tem permição para acessar essa pagina");
-
-    exit; // encerrar o script
+    exit;
 }
+// Caso seja funcionario
 
 if (!isset($pagina))
     exit;

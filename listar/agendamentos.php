@@ -3,11 +3,12 @@ require "configs/functions.php";
 
 // Verificar se a categoria do usuário é "funcionário" para permitir o acesso
 if ($_SESSION["usuarioAdm"]["categoria"] !== "Funcionario") {
-    // Redirecionar ou mostrar mensagem de erro
+    // Caso não seja Funcionario
     mensagem("Erro", "Voce não tem permição para acessar essa pagina");
 
-    exit; // encerrar o script
+    exit;
 }
+// Caso seja funcionario
 
 if (!isset($pagina))
     exit;
@@ -52,25 +53,26 @@ if (!isset($pagina))
 
                     while ($d = $consultaAgendamento->fetch(PDO::FETCH_OBJ)) {
                     ?>
-                        <tr>
-                            <td><?= $d->id ?></td>
-                            <td><?= $d->data ?></td>
-                            <td><?= $d->Nome ?></td>
-                            <td><?= $d->veiculo ?></td>
-                            <td><?= $d->motorista ?></td>
-                            <td><?= $d->hora ?></td>
-                            <td><?= $d->motivo ?></td>
-                            <td><?= $d->n_visitantes ?></td>
-                            <td><?= $d->produto ?></td>
-                            <td class="text-center">
-                                <a href="cadastrar/agendamentos/<?= $d->id ?>" title="Editar" class="btn btn-success btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td><?= $d->id ?></td>
+                        <td><?= $d->data ?></td>
+                        <td><?= $d->Nome ?></td>
+                        <td><?= $d->veiculo ?></td>
+                        <td><?= $d->motorista ?></td>
+                        <td><?= $d->hora ?></td>
+                        <td><?= $d->motivo ?></td>
+                        <td><?= $d->n_visitantes ?></td>
+                        <td><?= $d->produto ?></td>
+                        <td class="text-center">
+                            <a href="cadastrar/agendamentos/<?= $d->id ?>" title="Editar"
+                                class="btn btn-success btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
 
                     <?php
 
@@ -84,31 +86,31 @@ if (!isset($pagina))
 <br>
 <br>
 <script>
-    //iniciar o dataTables
-    $(document).ready(function() {
-        $(".table").DataTable({
-            language: {
-                lengthMenu: 'Mostrar _MENU_ registros por página',
-                zeroRecords: 'Sem resultados encontrados',
-                info: 'Mostrando página _PAGE_ de _PAGES_',
-                infoEmpty: 'Nenhum resultado',
-                infoFiltered: '(Filtrando de _MAX_ resultados)',
-                search: 'Busca',
-            },
-        });
-    })
+//iniciar o dataTables
+$(document).ready(function() {
+    $(".table").DataTable({
+        language: {
+            lengthMenu: 'Mostrar _MENU_ registros por página',
+            zeroRecords: 'Sem resultados encontrados',
+            info: 'Mostrando página _PAGE_ de _PAGES_',
+            infoEmpty: 'Nenhum resultado',
+            infoFiltered: '(Filtrando de _MAX_ resultados)',
+            search: 'Busca',
+        },
+    });
+})
 
-    function excluir(id) {
-        Swal.fire({
-            icon: "warning",
-            title: "Você deseja mesmo excluir este registro?",
-            showCancelButton: true,
-            confirmButtonText: "Excluir",
-            cancelButtonText: "Cancelar",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                location.href = "excluir/agendamentos/" + id;
-            }
-        })
-    }
+function excluir(id) {
+    Swal.fire({
+        icon: "warning",
+        title: "Você deseja mesmo excluir este registro?",
+        showCancelButton: true,
+        confirmButtonText: "Excluir",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = "excluir/agendamentos/" + id;
+        }
+    })
+}
 </script>
