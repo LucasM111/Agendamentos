@@ -109,21 +109,29 @@ $produto = $dados->produto ?? NULL;
                     <br>
 
                     <!-- Hora do Agendamento -->
-                    <label for="hora">Hora</label>
-                    <select name="hora" id="hora" type="time">
-                        <option value=""></option>
-                        <option value="08:00">08:00</option>
+                    <label for="hora">Horário Agendamento</label>
+                    <select type="time" name="hora" id="hora" class="form-control" required
+                        data-parsley-required-message="Selecione o Horário da Visita">
+                        <option value="">Selecione</option>
                         <option value="09:00">09:00</option>
                         <option value="10:00">10:00</option>
                         <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
                     </select>
+                    <script>
+                    $("#hora").val("<?= $hora ?>");
+                    </script>
                     <br>
 
                     <!-- Motivo do Agendamento -->
                     <label for="motivo">Motivo do Agendamento</label>
                     <select name="motivo" id="motivo" class="form-control" required
                         data-parsley-required-message="Selecione o motivo da visita">
-                        <option value=""></option>
+                        <option value="">Selecione</option>
                         <option value="Entrega de Produtos">Entrega de Produtos</option>
                         <option value="Coleta de Produtos">Coleta de Produtos</option>
                     </select>
