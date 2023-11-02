@@ -1,4 +1,14 @@
 <?php
+require 'configs/functions.php';
+
+// Verificar se a categoria do usuário é "funcionário" para permitir o acesso
+if ($_SESSION["usuarioAdm"]["categoria"] !== "Funcionario") {
+    // Redirecionar ou mostrar mensagem de erro
+    mensagem("Erro", "Voce não tem permição para acessar essa pagina");
+
+    exit; // encerrar o script
+}
+
 if (!isset($pagina))
     exit;
 
@@ -36,16 +46,20 @@ $categoria = $dados->categoria ?? NULL;
         </div>
         <div class="card-body">
             <form name="formCadastro" method="post" enctype="multipart/form-data" action="salvar/usuarios" data-parsley-validate="">
-                <br>
 
+                <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>" hidden>
+
+                <!-- NOME -->
                 <label for="nome">Nome e Sobrenome de Usuário:</label>
                 <input type="text" maxlength="20" name="nome" id="nome" class="form-control" required value="<?= $nome ?>" data-parsley-required-message="Preencha o nome">
                 <br>
 
+                <!-- LOGIN -->
                 <label for="login">Login de Usuário:</label>
                 <input type="text" maxlength="20" name="login" id="login" class="form-control" required value="<?= $login ?>" data-parsley-required-message="Preencha o login">
                 <br>
 
+                <!-- SENHA -->
                 <label for="senha">Senha de Usuário:</label>
                 <input type="password" maxlength="8" name="senha" id="senha" class="form-control">
                 <div class="regra-senha">
@@ -60,13 +74,15 @@ $categoria = $dados->categoria ?? NULL;
                     </p>
                 </div>
 
+                <!-- CONFIRMAÇÃO DE SENHA -->
                 <label for="senha2">Redigite a Senha de Usuário:</label>
                 <input type="password" maxlength="8" name="senha2" id="senha2" class="form-control">
                 <br>
 
+                <!-- ATIVO OU NÃO -->
                 <label for="ativo">Ativo?</label>
                 <select name="ativo" id="ativo" class="form-control" required data-parsley-required-message="Selecione se está ativo">
-                    <option value=""></option>
+                    <option value="">Selecione</option>
                     <option value="S">Sim</option>
                     <option value="N">Não</option>
                 </select>
@@ -76,9 +92,10 @@ $categoria = $dados->categoria ?? NULL;
 
                 <br>
 
+                <!-- CATEGORIA - Funcionario OU Cliente -->
                 <label for="categoria">Categoria?</label>
                 <select name="categoria" id="categoria" class="form-control" required data-parsley-required-message="Selecione se está categoria">
-                    <option value=""></option>
+                    <option value="">Selecione</option>
                     <option value="Funcionario">Funcionario</option>
                     <option value="Cliente">Cliente</option>
                 </select>

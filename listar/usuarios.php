@@ -1,4 +1,14 @@
 <?php
+require "configs/functions.php";
+
+// Verificar se a categoria do usuário é "funcionário" para permitir o acesso
+if ($_SESSION["usuarioAdm"]["categoria"] !== "Funcionario") {
+    // Redirecionar ou mostrar mensagem de erro
+    mensagem("Erro", "Voce não tem permição para acessar essa pagina");
+
+    exit; // encerrar o script
+}
+
 if (!isset($pagina))
     exit;
 ?>
@@ -35,12 +45,12 @@ if (!isset($pagina))
 
                     while ($dados = $consulta->fetch(PDO::FETCH_OBJ)) {
                     ?>
-                    <tr>
-                        <td><?= $dados->id ?></td>
-                        <td><?= $dados->nome ?></td>
-                        <td><?= $dados->login ?></td>
-                        <td><?= $dados->categoria ?></td>
-                    </tr>
+                        <tr>
+                            <td><?= $dados->id ?></td>
+                            <td><?= $dados->nome ?></td>
+                            <td><?= $dados->login ?></td>
+                            <td><?= $dados->categoria ?></td>
+                        </tr>
                     <?php
                     }
                     ?>
@@ -51,31 +61,31 @@ if (!isset($pagina))
 </div>
 <br>
 <script>
-//iniciar o dataTables
-$(document).ready(function() {
-    $(".table").DataTable({
-        language: {
-            lengthMenu: 'Mostrar _MENU_ registros por página',
-            zeroRecords: 'Sem resultados encontrados',
-            info: 'Mostrando página _PAGE_ de _PAGES_',
-            infoEmpty: 'Nenhum resultado',
-            infoFiltered: '(Filtrando de _MAX_ resultados)',
-            search: 'Busca',
-        },
-    });
-})
-
-function excluir(id) {
-    Swal.fire({
-        icon: "warning",
-        title: "Você deseja mesmo alterar este registro?",
-        showCancelButton: true,
-        confirmButtonText: "Excluir",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            location.href = "excluir/usuarios/" + id;
-        }
+    //iniciar o dataTables
+    $(document).ready(function() {
+        $(".table").DataTable({
+            language: {
+                lengthMenu: 'Mostrar _MENU_ registros por página',
+                zeroRecords: 'Sem resultados encontrados',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'Nenhum resultado',
+                infoFiltered: '(Filtrando de _MAX_ resultados)',
+                search: 'Busca',
+            },
+        });
     })
-}
+
+    function excluir(id) {
+        Swal.fire({
+            icon: "warning",
+            title: "Você deseja mesmo alterar este registro?",
+            showCancelButton: true,
+            confirmButtonText: "Excluir",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "excluir/usuarios/" + id;
+            }
+        })
+    }
 </script>

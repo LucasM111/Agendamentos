@@ -102,6 +102,7 @@ if ($resultado_verificacao['count'] > 0) {
                 $consulta->bindParam(":motivo", $motivo);
                 $consulta->bindParam(":n_visitantes", $n_visitantes);
                 $consulta->bindParam(":produto", $produto);
+                $consulta->bindParam(":id", $id);
             }
 
 

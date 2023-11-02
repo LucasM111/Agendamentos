@@ -48,11 +48,12 @@ $produto = $dados->produto ?? NULL;
 
                 <form name="formagendamentos" method="post" action="salvar/agendamentos" data-parsley-validate="">
 
+                    <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>" hidden>
 
                     <!-- Nome -->
                     <label for="nome">Nome e Sobrenome do agendante:</label>
                     <input type="text" maxlength="20" name="nome" id="nome" class="form-control" required
-                        data-parsley-required-message="Por favor, preencha este campo" value="">
+                        data-parsley-required-message="Por favor, preencha este campo" value="<?= $nome ?>">
                     <br>
 
                     <!-- Veiculo -->
@@ -105,7 +106,7 @@ $produto = $dados->produto ?? NULL;
                     <!-- Data do Agendamento -->
                     <label for="data">Data de agendamento</label>
                     <input type="text" name="data" id="data" class="form-control" required
-                        data-parsley-required-message="Por favor, preencha este campo" value="">
+                        data-parsley-required-message="Por favor, preencha este campo" value="<?= $data ?>">
                     <br>
 
                     <!-- Hora do Agendamento -->
@@ -145,13 +146,13 @@ $produto = $dados->produto ?? NULL;
                     <label for="n_visitantes">Digite a quantidade de visitantes:</label>
                     <input type="number" min="1" max="9" oninput="validity.valid||(value='')" name="n_visitantes"
                         id="n_visitantes" class="form-control" required
-                        data-parsley-required-message="Por favor, preencha este campo" value="">
+                        data-parsley-required-message="Por favor, preencha este campo" value="<?= $n_visitantes ?>">
                     <br>
 
                     <!-- Produto a ser transportado, seja ele coleta, ou entrega -->
                     <label for="produto">Produto</label>
                     <input type="text" maxlength="100" name="produto" id="produto" class="form-control" required
-                        data-parsley-required-message="Por favor, preencha este campo" value="">
+                        data-parsley-required-message="Por favor, preencha este campo" value="<?= $produto ?>">
                     <br>
 
                     <button type="submit" class="btn btn-success">

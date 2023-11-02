@@ -1,6 +1,14 @@
 <?php
 require "configs/functions.php";
 
+// Verificar se a categoria do usuário é "funcionário" para permitir o acesso
+if ($_SESSION["usuarioAdm"]["categoria"] !== "Funcionario") {
+    // Redirecionar ou mostrar mensagem de erro
+    mensagem("Erro", "Voce não tem permição para acessar essa pagina");
+
+    exit; // encerrar o script
+}
+
 if (!isset($pagina))
     exit;
 
@@ -55,6 +63,9 @@ if (!isset($pagina))
                             <td><?= $d->n_visitantes ?></td>
                             <td><?= $d->produto ?></td>
                             <td class="text-center">
+                                <a href="cadastrar/agendamentos/<?= $d->id ?>" title="Editar" class="btn btn-success btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                                 <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </a>

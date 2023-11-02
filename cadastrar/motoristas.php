@@ -36,16 +36,17 @@ $sobrenome = $dados->sobrenome ?? NULL;
         </div>
         <div class="card-body">
             <form name="formveiculos" method="post" action="salvar/motoristas" data-parsley-validate="">
-                <br>
+
+                <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>" hidden>
 
                 <!-- Nome -->
                 <label for="nome">Digite o Nome Motorista:</label>
-                <input type="text" maxlength="20" name="nome" id="nome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" maxlength="20" name="nome" id="nome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $nome ?>">
                 <br>
 
                 <!-- Sobrenome -->
                 <label for="sobrenome">Digite Sobrenome do Motorista:</label>
-                <input type="text" maxlength="20" name="sobrenome" id="sobrenome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="">
+                <input type="text" maxlength="20" name="sobrenome" id="sobrenome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $sobrenome ?>">
                 <br>
 
 

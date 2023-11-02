@@ -42,6 +42,7 @@ if (empty($id)) {
     $consulta = $pdo->prepare($sql);
     $consulta->bindParam(":nome", $nome);
     $consulta->bindParam(":sobrenome", $sobrenome);
+    $consulta->bindParam(":id", $id);
 }
 
 if ($consulta->execute()) {
