@@ -37,17 +37,18 @@ $placa = $dados->placa ?? NULL;
 
                 <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>" hidden>
 
+                <div class="campos-obrigatorios">
+                    <p>* Campos com preenchimento Obrigatório.</p>
+                </div>
 
                 <!-- Modelo -->
-                <label for="modelo">Digite o Modelo do Veiculo:</label>
-                <input type="text" maxlength="20" name="modelo" id="modelo" class="form-control" required
-                    data-parsley-required-message="Por favor, preencha este campo" value="<?= $modelo ?>">
+                <label for="modelo" class="campo-obrigatorio">Digite o Modelo do Veiculo</label>
+                <input type="text" maxlength="100" name="modelo" id="modelo" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $modelo ?>">
                 <br>
 
                 <!-- Placa -->
-                <label for="placa">Placa do Veiculo</label>
-                <input type="text" maxlength="20" name="placa" id="placa" class="form-control" required
-                    data-parsley-required-message="Por favor, preencha este campo" value="<?= $placa ?>">
+                <label for="placa" class="campo-obrigatorio">Placa do Veiculo</label>
+                <input type="text" maxlength="100" name="placa" id="placa" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $placa ?>">
                 <br>
 
                 <button type="submit" class="btn btn-success">
@@ -60,3 +61,27 @@ $placa = $dados->placa ?? NULL;
 </div>
 <br>
 <br>
+<script>
+    // Função para verificar campos e habilitar/desabilitar o botão de salvar
+    function verificarCamposVeiculos() {
+        // Obtém todos os valores dos campos
+        var modelo = document.getElementById("modelo").value;
+        var placa = document.getElementById("placa").value;
+
+        // Obtém o botão de salvar
+        var btnSalvar = document.querySelector("button[type='submit']");
+
+        // Verifica se todos os campos estão preenchidos
+        var todosPreenchidos = modelo && placa;
+
+        // Habilita/desabilita o botão com base na verificação
+        btnSalvar.disabled = !todosPreenchidos;
+    }
+
+    // Adiciona o evento oninput para cada campo
+    document.getElementById("modelo").addEventListener("input", verificarCamposVeiculos);
+    document.getElementById("placa").addEventListener("input", verificarCamposVeiculos);
+
+    // Chama a função uma vez para garantir que o botão esteja no estado correto inicialmente
+    verificarCamposVeiculos();
+</script>

@@ -25,6 +25,7 @@ $sobrenome = $dados->sobrenome ?? NULL;
         <div class="card-header">
             <strong>Cadastro de Motoristas</strong>
 
+
             <div class="float-end">
                 <a href="cadastrar/motoristas" class="btn btn-success btn-sm" title="Novo registro">
                     <i class="fas fa-file"></i> Cadastrar Motorista
@@ -39,18 +40,24 @@ $sobrenome = $dados->sobrenome ?? NULL;
 
                 <input type="text" name="id" id="id" class="form-control" readonly value="<?= $id ?>" hidden>
 
+                <div class="campos-obrigatorios">
+                    <p>* Campos com preenchimento Obrigatório.</p>
+                </div>
+
                 <!-- Nome -->
-                <label for="nome">Digite o Nome Motorista:</label>
-                <input type="text" maxlength="20" name="nome" id="nome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $nome ?>">
+                <label for="nome" class="campo-obrigatorio">Digite o Nome Motorista</label>
+                <input type="text" maxlength="100" name="nome" id="nome" class="form-control" required
+                    data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
                 <!-- Sobrenome -->
-                <label for="sobrenome">Digite Sobrenome do Motorista:</label>
-                <input type="text" maxlength="20" name="sobrenome" id="sobrenome" class="form-control" required data-parsley-required-message="Por favor, preencha este campo" value="<?= $sobrenome ?>">
+                <label for="sobrenome" class="campo-obrigatorio">Digite o Sobrenome do Motorista</label>
+                <input type="text" maxlength="100" name="sobrenome" id="sobrenome" class="form-control" required
+                    data-parsley-required-message="Por favor, preencha este campo" value="">
                 <br>
 
 
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" id="btnSalvar">
                     <i class="fas fa-check"></i> Salvar Dados
                 </button>
             </form>
@@ -60,3 +67,28 @@ $sobrenome = $dados->sobrenome ?? NULL;
 </div>
 <br>
 <br>
+
+<script>
+// Função para verificar campos e habilitar/desabilitar o botão de salvar
+function verificarCamposMotoristas() {
+    // Obtém todos os valores dos campos
+    var nome = document.getElementById("nome").value;
+    var sobrenome = document.getElementById("sobrenome").value;
+
+    // Obtém o botão de salvar
+    var btnSalvar = document.getElementById("btnSalvar");
+
+    // Verifica se todos os campos estão preenchidos
+    var todosPreenchidos = nome && sobrenome;
+
+    // Habilita/desabilita o botão com base na verificação
+    btnSalvar.disabled = !todosPreenchidos;
+}
+
+// Adiciona o evento oninput para cada campo
+document.getElementById("nome").addEventListener("input", verificarCamposMotoristas);
+document.getElementById("sobrenome").addEventListener("input", verificarCamposMotoristas);
+
+// Chama a função uma vez para garantir que o botão esteja no estado correto inicialmente
+verificarCamposMotoristas();
+</script>

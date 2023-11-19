@@ -14,6 +14,8 @@ date_default_timezone_set('America/Sao_Paulo');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/Ltech.png">
     <title>Agendamentos</title>
 
     <base href="<?= $base ?>">
@@ -28,6 +30,10 @@ date_default_timezone_set('America/Sao_Paulo');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-eHDJOYRvIeTn+J/kQhcwL6olzDH2C5zXD3UKjfP5cvhvSbKtE9hxUdYe5N+fxNCI6N2YO90omWiT/LjQekqXlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!----- arquivos javascript ---->
     <script src="js/jquery-3.5.1.min.js"></script>
@@ -39,6 +45,9 @@ date_default_timezone_set('America/Sao_Paulo');
     <script src="js/sweetalert2.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/vanilla-masker.js"></script>
+    <script src="js/btnSalvar.js"></script>
+
+
 
 
 

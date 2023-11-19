@@ -12,7 +12,7 @@ if (!$_POST)
 //recuperar os dados digitados no formulário
 // print_r($_POST);
 $id = trim($_POST["id"] ?? NULL);
-$nome = trim($_POST["nome"] ?? NULL);
+$nome = trim($_SESSION["usuarioAdm"]["nome"] ?? NULL);
 $veiculo = trim($_POST["veiculo"] ?? NULL);
 $motorista = trim($_POST["motorista"] ?? NULL);
 $data = trim($_POST["data"] ?? NULL);
@@ -61,7 +61,7 @@ if ($resultado_verificacao['count'] > 0) {
 
     if (validarNomeSobrenome($nome)) {
 
-        if (diaUtil($data)) {
+        if (diaUtil($data, $pdo)) {
 
 
 

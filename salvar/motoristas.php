@@ -28,6 +28,19 @@ if (!preg_match('/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{3,}$/', $nome))
 if (!preg_match('/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{3,}$/', $nome))
     mensagem("Erro", "Insira um Sobrenome Válido com pelo menos 3 letras");
 
+// Verificar se nome e sobrenome já existem no banco de dados
+$sqlVerificaExistencia = "SELECT id FROM motoristas WHERE nome = :nome AND sobrenome = :sobrenome";
+$consultaVerificaExistencia = $pdo->prepare($sqlVerificaExistencia);
+$consultaVerificaExistencia->bindParam(":nome", $nome);
+$consultaVerificaExistencia->bindParam(":sobrenome", $sobrenome);
+$consultaVerificaExistencia->execute();
+
+// Se encontrar registros, exibe mensagem e interrompe o script
+if ($consultaVerificaExistencia->rowCount() > 0) {
+    mensagem("Erro", "O Motorista já está cadastrado em nosso banco de dados, confira na lista de Motoristas.");
+}
+
+
 
 //verificar se vamos dar um insert ou um update
 if (empty($id)) {

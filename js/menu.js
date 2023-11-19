@@ -1,4 +1,4 @@
-var menuItem = document.querySelectorAll(".item-menu")
+var menuItem = document.querySelectorAll(".selecionar")
 
 function selectLink(){
     menuItem.forEach((item)=>
@@ -7,15 +7,13 @@ function selectLink(){
     this.classList.add('ativo')
 }
 
-menuItem.forEach((item)=>
-    item.addEventListener('click', selectLink)    
-)
+menuItem.forEach((item) => {
+    item.addEventListener('click', selectLink);
 
-//Expandir o menu
-
-var btnExp = document.querySelector('#btn-exp')
-var menuSide = document.querySelector('.menu-lateral')
-
-btnExp.addEventListener('click', function(){
-    menuSide.classList.toggle('expandir')
-})
+    // Verifica se o link corresponde à página atual e adiciona 'ativo' se necessário
+    var currentPage = window.location.href;
+    var link = item.querySelector('a').getAttribute('href');
+    if (currentPage.includes(link)) {
+        item.classList.add('ativo');
+    }
+});

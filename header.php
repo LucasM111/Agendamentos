@@ -10,13 +10,19 @@ if (!isset($pagina)) {
         <h1>Agendamentos</h1>
     </div>
     <ul>
-        <li><a href="pages/home">Home</a></li>
-        <li><a href="pages/help">Ajuda</a></li>
-        <li><a href="pages/sobre">Sobre</a></li>
-        <li><a href="cadastrar/motoristas">+ Motoristas</a></li>
-        <li><a href="cadastrar/veiculos">+ Veiculos</a></li>
-        <li><a href="cadastrar/agendamentos">Agendar Visita</a></li>
-        <li><a href="cadastrar/usuarios">+ Usuario</a></li>
+        <li class="selecionar"><a href="pages/home">Home</a></li>
+        <li class="cadastros">
+            <a href="pages/home">Info</a>
+            <ul class="sub-menu">
+                <li><a href="pages/help">Ajuda</a></li>
+                <li><a href="pages/sobre">Sobre</a></li>
+            </ul>
+        </li>
+        <li class="selecionar "><a href="cadastrar/motoristas">+ Motoristas</a></li>
+        <li class="selecionar "><a href="cadastrar/veiculos">+ Veículos</a></li>
+        <li class="selecionar "><a href="cadastrar/agendamentos">Agendar Visitas</a></li>
+        <li class="selecionar "><a href="cadastrar/usuarios">+ Usuário</a></li>
+        <li class="selecionar "><a href="cadastrar/feriados">+ Feriados</a></li>
         <li class="Sair"><a onclick="confirmarSaida()">Sair</a></li>
     </ul>
 
@@ -26,6 +32,7 @@ if (!isset($pagina)) {
         </label>
     </div>
 </header>
+<script src="js/menu.js"></script>
 
 <script>
     function confirmarSaida() {
@@ -39,7 +46,8 @@ if (!isset($pagina)) {
             if (result.isConfirmed) {
                 window.location.href = "sair.php";
             } else {
-                window.location.href = "home";
+                const currentPage = window.location.href;
+                window.location.href = currentPage;
             }
         });
     }

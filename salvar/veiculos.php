@@ -19,6 +19,17 @@ if (!validarPlaca($placa)) {
     mensagem("Erro", "Placa inválida");
 }
 
+// Verificar se a placa do veiculo já existe no banco de dados
+$sqlVerificaExistencia = "SELECT id FROM veiculos WHERE placa = :placa";
+$consultaVerificaExistencia = $pdo->prepare($sqlVerificaExistencia);
+$consultaVerificaExistencia->bindParam(":placa", $placa);
+$consultaVerificaExistencia->execute();
+
+
+if ($consultaVerificaExistencia->rowCount() > 0) {
+    mensagem("Erro", "A placa já está cadastrado em nosso banco de dados com relação a algum veiculo, confira na lista de veiculos.");
+}
+
 
 //verificar se esses campos estão em branco
 if (empty($modelo))

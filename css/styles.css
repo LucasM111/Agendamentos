@@ -8,6 +8,7 @@
 }
 
 :root {
+  --black: #000;
   --blue: #2a2185;
   --white: #fff;
   --gray: rgba(255, 255, 255, .2);
@@ -17,7 +18,8 @@
   --purple: #8000ff;
   --red: #ff0000;
   --light_purple: #935fed;
-  --light_pink: #bf70ff
+  --light_pink: #bf70ff;
+  --light_red: #ff5c5c;
 }
 
 body {
@@ -26,6 +28,8 @@ body {
   background-position: center;
   height: 100vh;
 }
+
+
 
 
 /* ================= HEADER =================================== */
@@ -59,6 +63,15 @@ header ul li {
   list-style: none;
 }
 
+header .cadastros ul li {
+  margin: 20px 10px;
+  margin-left: -15px;
+}
+
+header ul li.current a {
+  border-bottom: 2px solid var(--white);
+}
+
 header ul li a {
   text-decoration: none;
   color: var(--white);
@@ -66,6 +79,16 @@ header ul li a {
   text-transform: uppercase;
   padding: 10px 10px;
   margin-right: 3px;
+}
+
+header ul li.ativo {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  margin-right: 3px;
+  border-bottom: 2px solid var(--white);
 }
 
 header ul li a:hover {
@@ -336,7 +359,7 @@ header .menu {
 /* ================ SCROLLBAR =================== */
 
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -347,8 +370,33 @@ header .menu {
   color: var(--black2);
 }
 
+.campos-obrigatorios {
+  color: var(--light_red);
+
+}
+
+.campo-obrigatorio::after {
+  content: "*";
+  color: var(--red);
+}
+
 .Sair {
   color: var(--white);
   cursor: pointer;
 
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  background-color: var(--black1);
+  box-shadow: 0 8px 16px var(--black);
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.cadastros:hover .sub-menu {
+  display: block;
 }

@@ -10,9 +10,6 @@ if ($_SESSION["usuarioAdm"]["categoria"] !== "Funcionario") {
 }
 // Caso seja funcionario
 
-if (!isset($pagina))
-    exit;
-
 ?>
 <div class="cadastramento">
     <div class="card">
@@ -34,14 +31,14 @@ if (!isset($pagina))
                     <tr>
                         <td>N°</td>
                         <td>Data</td>
-                        <td>Visitante</td>
+                        <td>Usuário</td>
                         <td>Veiculo</td>
                         <td>Motorista</td>
                         <td>Hora</td>
                         <td>Motivo</td>
                         <td>Qntd Visitantes</td>
                         <td>Produto</td>
-                        <td width="100px">Excluir</td>
+                        <td width="100px">Editar/Excluir</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,26 +50,30 @@ if (!isset($pagina))
 
                     while ($d = $consultaAgendamento->fetch(PDO::FETCH_OBJ)) {
                     ?>
-                    <tr>
-                        <td><?= $d->id ?></td>
-                        <td><?= $d->data ?></td>
-                        <td><?= $d->Nome ?></td>
-                        <td><?= $d->veiculo ?></td>
-                        <td><?= $d->motorista ?></td>
-                        <td><?= $d->hora ?></td>
-                        <td><?= $d->motivo ?></td>
-                        <td><?= $d->n_visitantes ?></td>
-                        <td><?= $d->produto ?></td>
-                        <td class="text-center">
-                            <a href="cadastrar/agendamentos/<?= $d->id ?>" title="Editar"
-                                class="btn btn-success btn-sm">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?= $d->id ?></td>
+                            <td><?= $d->data ?></td>
+                            <td><?= $d->Nome ?></td>
+                            <td><?= $d->veiculo ?></td>
+                            <td><?= $d->motorista ?></td>
+                            <td><?= $d->hora ?></td>
+                            <td><?= $d->motivo ?></td>
+                            <td><?= $d->n_visitantes ?></td>
+                            <td><?= $d->produto ?></td>
+                            <td class="text-center">
+                                <?php if ($_SESSION["usuarioAdm"]["categoria"] === "Funcionario") { ?>
+                                    <a href="cadastrar/agendamentos/<?= $d->id ?>" title="Editar" class="btn btn-success btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="javascript:excluir(<?= $d->id ?>)" title="Excluir" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                <?php } else { ?>
+                                    <!-- Apenas exibição, sem opções de editar/excluir -->
+                                    <span class="text-muted">Não Habilitado</span>
+                                <?php } ?>
+                            </td>
+                        </tr>
 
                     <?php
 
@@ -86,31 +87,31 @@ if (!isset($pagina))
 <br>
 <br>
 <script>
-//iniciar o dataTables
-$(document).ready(function() {
-    $(".table").DataTable({
-        language: {
-            lengthMenu: 'Mostrar _MENU_ registros por página',
-            zeroRecords: 'Sem resultados encontrados',
-            info: 'Mostrando página _PAGE_ de _PAGES_',
-            infoEmpty: 'Nenhum resultado',
-            infoFiltered: '(Filtrando de _MAX_ resultados)',
-            search: 'Busca',
-        },
-    });
-})
-
-function excluir(id) {
-    Swal.fire({
-        icon: "warning",
-        title: "Você deseja mesmo excluir este registro?",
-        showCancelButton: true,
-        confirmButtonText: "Excluir",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            location.href = "excluir/agendamentos/" + id;
-        }
+    //iniciar o dataTables
+    $(document).ready(function() {
+        $(".table").DataTable({
+            language: {
+                lengthMenu: 'Mostrar _MENU_ registros por página',
+                zeroRecords: 'Sem resultados encontrados',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'Nenhum resultado',
+                infoFiltered: '(Filtrando de _MAX_ resultados)',
+                search: 'Busca',
+            },
+        });
     })
-}
+
+    function excluir(id) {
+        Swal.fire({
+            icon: "warning",
+            title: "Você deseja mesmo excluir este registro?",
+            showCancelButton: true,
+            confirmButtonText: "Excluir",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "excluir/agendamentos/" + id;
+            }
+        })
+    }
 </script>
