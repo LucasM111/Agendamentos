@@ -33,6 +33,7 @@ date_default_timezone_set('America/Sao_Paulo');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-eHDJOYRvIeTn+J/kQhcwL6olzDH2C5zXD3UKjfP5cvhvSbKtE9hxUdYe5N+fxNCI6N2YO90omWiT/LjQekqXlQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
 
     <!----- arquivos javascript ---->

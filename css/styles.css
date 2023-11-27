@@ -400,3 +400,22 @@ header .menu {
 .cadastros:hover .sub-menu {
   display: block;
 }
+
+/* --------------- ICONE SENHA -------------------- */
+
+.toggle-password {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--black);
+}
+
+.input-box {
+  position: relative;
+}
+
+.input-box input[type="password"] {
+  padding-right: 30px;
+}
